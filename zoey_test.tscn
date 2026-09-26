@@ -1,13 +1,16 @@
 [gd_scene format=3 uid="uid://cgmvlhmqu1ukj"]
 
+[ext_resource type="Script" uid="uid://bq65o46hl3iuc" path="res://Scripts/zoey_test.gd" id="1_8ajgq"]
 [ext_resource type="PackedScene" uid="uid://bclqrx1knslno" path="res://Scenes/explosion_base.tscn" id="1_744ye"]
 [ext_resource type="Texture2D" uid="uid://nyroyh80wbw6" path="res://Assets/icon.svg" id="2_wpyb0"]
 [ext_resource type="PackedScene" uid="uid://bh248gqoo6vbh" path="res://Scenes/Objects/test_rigid_body.tscn" id="3_xxtq0"]
+[ext_resource type="PackedScene" uid="uid://bkggr3wmck33d" path="res://Scenes/Enemies/test_char_body.tscn" id="4_sawlt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ttdc2"]
 size = Vector2(489, 125)
 
 [node name="ZoeyTest" type="Node2D" unique_id=1974073417]
+script = ExtResource("1_8ajgq")
 
 [node name="ExplosionBase" parent="." unique_id=61808947 instance=ExtResource("1_744ye")]
 position = Vector2(225, 183)
@@ -41,3 +44,6 @@ position = Vector2(105, 179)
 
 [node name="TestRigidBody5" parent="." unique_id=140122671 instance=ExtResource("3_xxtq0")]
 position = Vector2(146, 199)
+
+[node name="TestCharBody2" parent="." unique_id=1006738691 instance=ExtResource("4_sawlt")]
+position = Vector2(146, 179)

@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://dd37581vbvknq"]
+
+[ext_resource type="Script" uid="uid://dwwlfvsw84jf7" path="res://Scripts/Enemies/pushable_char_body.gd" id="1_2x7g1"]
+
+[node name="PushableCharacterBody" type="CharacterBody2D" unique_id=73494080 groups=["PushableBodies"]]
+script = ExtResource("1_2x7g1")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=487615212]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=935755363]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1486614449]
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1989966584]
+
+[node name="ImpulseCollision" type="CollisionShape2D" parent="Area2D" unique_id=1317541111]

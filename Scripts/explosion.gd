@@ -40,14 +40,15 @@ func _physics_process(delta: float) -> void:
 	Explosion_Collision.scale = Vector2(current_radius, current_radius)
 	#print("radius is : "+ str(current_radius))
 	#print("power is : "+ str(current_power))
-	print("push is : "+ str(current_push))
+	#print("push is : "+ str(current_push))
 
 func on_entered(body:Node2D):
+	print(body.get_class())
 	var dir:Vector2 = body.global_position - self.global_position
-	if body.is_in_group("PushableBodies"):
-		pass
+	if body.is_in_group("PushableBodies")&& body.is_class("CharacterBody2D"):
+		body.pushed(dir.normalized(), current_push)
 	if body.is_in_group("PushableRigid"):
+		print("HELP ME!!!!!!!!!!!!!!")
 		body.pushed(dir.normalized(), current_push)
 		#apply_impulse((strength * direction, origin of impulse)
 		pass
-		#apply force(direction, power)
