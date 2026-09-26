@@ -67,7 +67,7 @@ scale_over_velocity_curve = SubResource("CurveTexture_kmxx5")
 color_ramp = SubResource("GradientTexture1D_8pl4r")
 alpha_curve = SubResource("CurveTexture_ntruu")
 
-[node name="Explosion" type="GPUParticles2D" unique_id=115644250]
+[node name="Explosions" type="GPUParticles2D" unique_id=115644250]
 position = Vector2(75, 40)
 amount = 200
 explosiveness = 0.6
