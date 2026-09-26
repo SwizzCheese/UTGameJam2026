@@ -1,6 +1,8 @@
 class_name Player
 extends PushableCharBody
 
+var in_cutscene : bool
+
 var max_health : int = 3
 var health : int = max_health
 
@@ -33,6 +35,8 @@ func _ready() -> void:
 	slipperiness = 20
 	gravity = 20
 	
+	in_cutscene = false
+	
 	invincible_timer.timeout.connect(invincible_timer_timeout)
 	
 	#Check global for unlocked spell list!!
@@ -45,13 +49,13 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * delta
 	
 	# Handle jump.
-	if Input.is_action_just_pressed("up") and is_on_floor():
+	if Input.is_action_just_pressed("up") and is_on_floor() and !in_cutscene:
 		velocity.y = jump_velocity
 	
-	if Input.is_action_just_pressed("throw_bomb"):
+	if Input.is_action_just_pressed("throw_bomb") and !in_cutscene:
 		throw_bomb()
 	
-	if Input.is_action_just_pressed("spell"):
+	if Input.is_action_just_pressed("spell") and !in_cutscene:
 		cast_spell()
 	
 	#if Input.is_action_just_pressed("change_spell"):
@@ -61,7 +65,7 @@ func _physics_process(delta: float) -> void:
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction := Input.get_axis("left", "right")
-	if direction:
+	if direction and !in_cutscene:
 		velocity.x = move_toward(velocity.x, direction * speed, slipperiness)
 	else:
 		velocity.x = move_toward(velocity.x, 0, slipperiness)

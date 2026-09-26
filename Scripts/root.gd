@@ -132,7 +132,7 @@ func _place_player_at_level_spawn() -> void:
 	if _current_level == null:
 		push_error("Cannot place player in level because level is null")
 		return
-	
+	Global.player.in_cutscene = false
 	player.global_position = _current_level.get_default_player_spawn()
 
 
@@ -152,6 +152,11 @@ func _setup_level_camera() -> void:
 
 #endregion
 
+func show_level_clear_screen():
+	$TransitionLayer/TransitionRoot/Label.visible = true
+
+func hide_level_clear_screen():
+	$TransitionLayer/TransitionRoot/Label.visible = false
 
 func change_spell()-> void: 
 	if current_spell + 1 >max_spell:
