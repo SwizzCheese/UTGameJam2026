@@ -68,10 +68,10 @@ offset_bottom = -122.0
 [node name="Label" type="Label" parent="TransitionLayer/TransitionRoot" unique_id=1404847169]
 visible = false
 layout_mode = 0
-offset_left = -46.0
-offset_top = -12.0
-offset_right = 57.0
-offset_bottom = 11.0
+offset_left = 234.0
+offset_top = 156.0
+offset_right = 337.0
+offset_bottom = 179.0
 text = "LEVEL CLEAR!"
 
 [node name="MenuLayer" type="CanvasLayer" parent="." unique_id=1070006116]
