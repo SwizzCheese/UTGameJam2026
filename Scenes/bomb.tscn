@@ -15,3 +15,7 @@ shape = SubResource("CircleShape2D_g4v7s")
 modulate = Color(1, 0, 0, 1)
 scale = Vector2(0.12499999, 0.12499999)
 texture = ExtResource("1_yx723")
+
+[node name="explode_timer" type="Timer" parent="." unique_id=3098855]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1908040694]
