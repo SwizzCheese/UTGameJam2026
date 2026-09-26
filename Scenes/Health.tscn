@@ -5,19 +5,22 @@
 
 [node name="Health" type="Node2D" unique_id=802376835]
 
-[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1605089309]
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="Health" type="CanvasLayer" parent="." unique_id=1732881610]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Health" unique_id=1605089309]
+offset_top = -31.0
+offset_right = 296.0
+offset_bottom = 50.0
 script = ExtResource("1_2docl")
 
-[node name="Heart" type="TextureRect" parent="HBoxContainer" unique_id=904494156]
+[node name="Heart" type="TextureRect" parent="Health/HBoxContainer" unique_id=904494156]
 layout_mode = 2
 texture = ExtResource("2_3e1s5")
 
-[node name="Heart2" type="TextureRect" parent="HBoxContainer" unique_id=731122612]
+[node name="Heart2" type="TextureRect" parent="Health/HBoxContainer" unique_id=731122612]
 layout_mode = 2
 texture = ExtResource("2_3e1s5")
 
-[node name="Heart3" type="TextureRect" parent="HBoxContainer" unique_id=1812133854]
+[node name="Heart3" type="TextureRect" parent="Health/HBoxContainer" unique_id=1812133854]
 layout_mode = 2
 texture = ExtResource("2_3e1s5")
