@@ -1,8 +1,9 @@
 [gd_scene format=3 uid="uid://dntp6ubf0fjog"]
 
-[ext_resource type="Texture2D" uid="uid://nyroyh80wbw6" path="res://Assets/icon.svg" id="1_6bqba"]
 [ext_resource type="Script" uid="uid://dcf0jd51a8neu" path="res://Scripts/wiizard.gd" id="1_f8i40"]
 [ext_resource type="Script" uid="uid://bw4k58wv60dua" path="res://Scripts/wiizard_hitbox.gd" id="3_1euf4"]
+[ext_resource type="AudioStream" uid="uid://dq2my82jmld2u" path="res://Assets/Soundeffects/jump1.wav" id="4_2ex1u"]
+[ext_resource type="Texture2D" uid="uid://del54vdie50ko" path="res://Assets/BombWiizard_MainCharacterSheet.png" id="4_t60q5"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g4v7s"]
 radius = 8.0
@@ -11,14 +12,156 @@ height = 32.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ttdc2"]
 size = Vector2(18, 33)
 
+[sub_resource type="Animation" id="Animation_2f38u"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_tlbga"]
+resource_name = "hurt"
+length = 0.39999999999999997
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.099999994, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [4, 5, 4, 5]
+}
+
+[sub_resource type="Animation" id="Animation_agnx8"]
+resource_name = "idle"
+length = 0.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_v2hwe"]
+resource_name = "idle_shoot"
+length = 0.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+
+[sub_resource type="Animation" id="Animation_inrk6"]
+resource_name = "jump"
+length = 0.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_w0wm2"]
+resource_name = "jump_shoot"
+length = 0.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+
+[sub_resource type="Animation" id="Animation_ndp6a"]
+resource_name = "run"
+length = 0.39999999999999997
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [6, 7, 8, 9]
+}
+
+[sub_resource type="Animation" id="Animation_a1xxo"]
+resource_name = "run_shoot"
+length = 0.39999999999999997
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.099999994, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [10, 11, 12, 13]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kelyl"]
+_data = {
+&"RESET": SubResource("Animation_2f38u"),
+&"hurt": SubResource("Animation_tlbga"),
+&"idle": SubResource("Animation_agnx8"),
+&"idle_shoot": SubResource("Animation_v2hwe"),
+&"jump": SubResource("Animation_inrk6"),
+&"jump_shoot": SubResource("Animation_w0wm2"),
+&"run": SubResource("Animation_ndp6a"),
+&"run_shoot": SubResource("Animation_a1xxo")
+}
+
 [node name="Wiizard" type="CharacterBody2D" unique_id=789476140]
+collision_layer = 2
+collision_mask = 9
 script = ExtResource("1_f8i40")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2036305620]
-
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1270475118]
-scale = Vector2(0.12499999, 0.24999999)
-texture = ExtResource("1_6bqba")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1244925019]
 shape = SubResource("CapsuleShape2D_g4v7s")
@@ -26,7 +169,7 @@ shape = SubResource("CapsuleShape2D_g4v7s")
 [node name="BombCreationPoint" type="Marker2D" parent="." unique_id=1764285813]
 position = Vector2(16, 0)
 
-[node name="hitbox" type="Area2D" parent="." unique_id=1446174543]
+[node name="hitbox" type="Area2D" parent="." unique_id=1446174543 groups=["player"]]
 collision_layer = 2
 collision_mask = 7
 script = ExtResource("3_1euf4")
@@ -38,3 +181,16 @@ shape = SubResource("RectangleShape2D_ttdc2")
 [node name="invincible_timer" type="Timer" parent="." unique_id=2065218456]
 wait_time = 0.5
 one_shot = true
+
+[node name="ChuckAnimationTimer" type="Timer" parent="." unique_id=2037324662]
+wait_time = 0.3
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1857240126]
+stream = ExtResource("4_2ex1u")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1353195112]
+texture = ExtResource("4_t60q5")
+hframes = 14
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=142922179]
+libraries/ = SubResource("AnimationLibrary_kelyl")

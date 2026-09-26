@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://ux64pxsg4rme"]
+
+[ext_resource type="Script" path="res://Scenes/main_menu.gd" id="1_853f1"]
+[ext_resource type="Texture2D" path="res://Assets/MenuBackground.png" id="2_8saeu"]
+
+[node name="MainMenu" type="Node2D" unique_id=1119867714]
+script = ExtResource("1_853f1")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=142432783]
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer" unique_id=1129594947]
+position = Vector2(643, 222)
+scale = Vector2(1.4492188, 1.4958333)
+texture = ExtResource("2_8saeu")
+
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=1807585051]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1209.0
+offset_bottom = 658.0
+
+[node name="Button" type="Button" parent="CanvasLayer/Control" unique_id=89131363]
+layout_mode = 0
+offset_left = 261.0
+offset_top = 62.0
+offset_right = 827.0
+offset_bottom = 239.0
+text = "PLAY"
+
+[node name="Button3" type="Button" parent="CanvasLayer/Control" unique_id=1646691837]
+layout_mode = 0
+offset_left = 261.0
+offset_top = 431.0
+offset_right = 832.0
+offset_bottom = 623.0
+text = "Exit"
+
+[node name="Button2" type="Button" parent="CanvasLayer/Control" unique_id=1296715125]
+layout_mode = 0
+offset_left = 261.0
+offset_top = 243.0
+offset_right = 828.0
+offset_bottom = 421.0
+text = "Options"
+
+[connection signal="pressed" from="CanvasLayer/Control/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/Button3" to="." method="_on_quiz_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/Button2" to="." method="_on_button_2_pressed"]

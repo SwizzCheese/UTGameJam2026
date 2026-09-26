@@ -66,6 +66,8 @@ func on_entered(body:Node2D):
 		body.pushed(dir.normalized(), current_push)
 		#apply_impulse((strength * direction, origin of impulse)
 		pass
+	if body.is_in_group("enemy"):
+		body.pushed(dir.normalized(), current_push)
 
 func timer_timout() -> void:
 	queue_free()
@@ -91,11 +93,12 @@ func damage(area:Node2D) -> void:
 		print("damaging player")
 		var damage_array:Array[int] = [1, 0, 0, 0, 0]
 		if type ==1:
-			damage_array== [1, 1, 0, 0, 0]
+			damage_array = [1, 1, 0, 0, 0]
 		elif type ==2:
-			damage_array== [1, 0, 1, 0, 0]
+			damage_array = [1, 0, 1, 0, 0]
 		elif type ==3:
-			damage_array== [1, 0, 0, 1, 0]
+			damage_array = [1, 0, 0, 1, 0]
 		elif type ==4:
-			damage_array== [1, 0, 0, 0, 1]
+			damage_array = [1, 0, 0, 0, 1]
 		area.owner.damaged(damage_array)
+	

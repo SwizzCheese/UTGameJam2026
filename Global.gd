@@ -3,6 +3,7 @@ extends Node
 # to in here
 
 var player : Player
+var root : GameRoot
 
 signal player_hurt(int)
 signal player_died

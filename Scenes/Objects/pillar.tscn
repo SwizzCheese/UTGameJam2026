@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://dq5m0dl6u1xng"]
+
+[ext_resource type="Script" uid="uid://cfh8yqxhtghsq" path="res://Scripts/pillar.gd" id="1_qjw1r"]
+[ext_resource type="Texture2D" uid="uid://bhvbavkos2i1w" path="res://Assets/BombWiizard_Pillar.png" id="2_qjw1r"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
+size = Vector2(16, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yf5fn"]
+size = Vector2(18, 34)
+
+[node name="Pillar" type="StaticBody2D" unique_id=200004278]
+collision_layer = 4
+script = ExtResource("1_qjw1r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1746942364]
+shape = SubResource("RectangleShape2D_g4v7s")
+debug_color = Color(0, 0.6475406, 0.2166881, 0.41960785)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=331296038]
+position = Vector2(0, -2.3841858e-07)
+texture = ExtResource("2_qjw1r")
+
+[node name="hitbox" type="Area2D" parent="." unique_id=1625187714]
+collision_layer = 4
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox" unique_id=1065741962]
+shape = SubResource("RectangleShape2D_yf5fn")
+debug_color = Color(0.10327499, 0.6484332, 1.92523e-07, 0.41960785)
+
+[connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]

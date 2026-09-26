@@ -1,6 +1,8 @@
 class_name Player
 extends PushableCharBody
 
+var in_cutscene : bool
+
 var max_health : int = 3
 var health : int = max_health
 
@@ -16,14 +18,18 @@ const BOMB : PackedScene = preload("uid://ctha3hokhls8e")
 
 var current_spell : int
 var current_bomb:int
+var chucking : bool
+var hurting : bool
 
 var spell_list : Array
 
 var unlocked_spell_list : Array
 
-
+@onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
+@onready var animation : AnimationPlayer = $AnimationPlayer
 @onready var hitbox: Area2D = $hitbox
 @onready var invincible_timer: Timer = $invincible_timer
+@onready var chuck_animation_timer : Timer = $ChuckAnimationTimer
 
 func _ready() -> void:
 	if BOMB == null:
@@ -33,10 +39,13 @@ func _ready() -> void:
 	slipperiness = 20
 	gravity = 20
 	
-	invincible_timer.timeout.connect(invincible_timer_timout)
+	in_cutscene = false
+	chucking = false
+	hurting = false
 	
+	invincible_timer.timeout.connect(invincible_timer_timeout)
+	chuck_animation_timer.timeout.connect(chuck_animation_timer_timeout)
 	#Check global for unlocked spell list!!
-	
 
 
 
@@ -46,13 +55,15 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * delta
 	
 	# Handle jump.
-	if Input.is_action_just_pressed("up") and is_on_floor():
+	if Input.is_action_just_pressed("up") and is_on_floor() and !in_cutscene:
 		velocity.y = jump_velocity
+		audio_stream_player_2d.play()
+		
 	
-	if Input.is_action_just_pressed("throw_bomb"):
+	if Input.is_action_just_pressed("throw_bomb") and !in_cutscene:
 		throw_bomb()
 	
-	if Input.is_action_just_pressed("spell"):
+	if Input.is_action_just_pressed("spell") and !in_cutscene:
 		cast_spell()
 	
 	#if Input.is_action_just_pressed("change_spell"):
@@ -62,35 +73,53 @@ func _physics_process(delta: float) -> void:
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction := Input.get_axis("left", "right")
-	if direction:
+	if direction and !in_cutscene:
 		velocity.x = move_toward(velocity.x, direction * speed, slipperiness)
 	else:
 		velocity.x = move_toward(velocity.x, 0, slipperiness)
 	if Input.is_action_just_pressed("left"):
 		last_direction = -1
+		$Sprite2D.flip_h  = true
 		$BombCreationPoint.position = Vector2(-16.0,0)
 	if Input.is_action_just_pressed("right"):
 		last_direction = 1
+		$Sprite2D.flip_h  = false
 		$BombCreationPoint.position = Vector2(16.0,0)
 	
-	move_and_slide()
 	
+	if hurting:
+		animation.play("hurt")
+	elif !is_on_floor() and !chucking:
+		animation.play("jump")
+	elif !is_on_floor() and chucking:
+		animation.play("jump_shoot")
+	elif direction and !chucking:
+		animation.play("run")
+	elif direction and chucking:
+		animation.play("run_shoot")
+	elif !direction and chucking:
+		animation.play("idle_shoot")
+	else:
+		animation.play("idle")
+	
+	
+	move_and_slide()
 
 
 
 func cast_spell():
 	#Check Current_Spell and cast it using the following statements
 	if current_spell == 1:
-		#Cast GravityShove, which moves objects?
+		#Cast GravityShove, which moves objects like a bomb
 		pass
 	elif current_spell == 2:
-		#Cast LightningBolt, Hits enemy in line of sight then hits the closest enemy in a few tiles
+		#Cast VampiricTouch, which is a short range attack that heals on hit
 		pass
 	elif current_spell == 3:
-		#Cast something idk bro
+		#Cast LightningBurst, which is a moderate range sphere of damage around the player
 		pass
 	elif current_spell == 4:
-		#Cast Wind, maybe makes the player faster and floatier?
+		#Cast Wind, maybe makes the player faster and floatier
 		pass
 	elif current_spell == 5:
 		#Cast SheerHeartAttack, just insta-kills enemy within line of sight
@@ -104,6 +133,8 @@ func change_spell(new_bomb:int):
 
 func throw_bomb():
 	#Instantiate a bomb object at BombCreationPoint with velocity away and up from player's global position
+	chucking = true
+	chuck_animation_timer.start()
 	var bomb_instance = BOMB.instantiate()
 	bomb_instance.direction = last_direction
 	print("players current spell is: "+ str(current_bomb))
@@ -113,12 +144,12 @@ func throw_bomb():
 	bomb_instance.global_transform = $BombCreationPoint.global_transform
 	
 func pushed(dir:Vector2, strength:float):
-	print("HI, Wiizard PUSHED")
+	#print("HI, Wiizard PUSHED")
 	velocity += (dir * strength*10)
-	print("Wiizard VELOCITY CHANGED: "+ str(velocity))
+	#print("Wiizard VELOCITY CHANGED: "+ str(velocity))
 
 func damaged(damage_array:Array[int]):
-	print("Player hit!!!!!!!!!!!!!!!!!!!!!!!!!11")
+	hurting = true
 	health = health - damage_array[0]
 	if health <= 0:
 		destroyed()
@@ -132,6 +163,11 @@ func damaged(damage_array:Array[int]):
 func destroyed():
 	Global.player_died.emit()
 	print("player dies")
+	queue_free()
 
-func invincible_timer_timout():
+func invincible_timer_timeout():
+	hurting = false
 	$hitbox/hitbox_collision.set_deferred("disabled", false)
+
+func chuck_animation_timer_timeout():
+	chucking = false

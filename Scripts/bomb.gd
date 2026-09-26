@@ -26,14 +26,7 @@ func _ready() -> void:
 	explode_timer.start()
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(delta: float) -> void:
-	#if thrown:
-		#var velocity : Vector2
-		#velocity.x = initial_velocity.x * direction
-		#velocity.y = initial_velocity.y
-		#apply_impulse(velocity)
-	pass
+
 
 func explode() -> void:
 	#explode
