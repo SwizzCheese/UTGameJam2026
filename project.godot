@@ -15,16 +15,10 @@ run/main_scene="uid://b38vv7u4xfeuv"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://Assets/icon.svg"
 
-<<<<<<< HEAD
 [global_group]
 
 PushableBodies=""
 PushableRigid=""
-=======
-[dotnet]
-
-project/assembly_name="UTGameJam2026"
->>>>>>> main
 
 [input]
 
