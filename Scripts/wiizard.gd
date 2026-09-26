@@ -120,7 +120,8 @@ func damaged(damage_array:Array[int]):
 	health = health - damage_array[0]
 	if health <= 0:
 		destroyed()
-	Global.player_hurt.emit(health)
+	else:
+		Global.player_hurt.emit(health)
 	$hitbox/hitbox_collision.set_deferred("disabled", true)
 	invincible_timer.start()
 	
