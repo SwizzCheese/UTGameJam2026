@@ -33,7 +33,7 @@ func _ready() -> void:
 	slipperiness = 20
 	gravity = 20
 	
-	invincible_timer.timeout.connect(invincible_timer_timout)
+	invincible_timer.timeout.connect(invincible_timer_timeout)
 	
 	#Check global for unlocked spell list!!
 	
@@ -133,5 +133,5 @@ func destroyed():
 	Global.player_died.emit()
 	print("player dies")
 
-func invincible_timer_timout():
+func invincible_timer_timeout():
 	$hitbox/hitbox_collision.set_deferred("disabled", false)

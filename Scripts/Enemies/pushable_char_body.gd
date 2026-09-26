@@ -11,8 +11,6 @@ func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
-		print("VECOCITY: "+ str(velocity))
-		print("HI")
 	move_and_slide()
 
 func pushed(dir:Vector2, strength:float):

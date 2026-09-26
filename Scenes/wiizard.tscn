@@ -12,6 +12,8 @@ height = 32.0
 size = Vector2(18, 33)
 
 [node name="Wiizard" type="CharacterBody2D" unique_id=789476140]
+collision_layer = 2
+collision_mask = 9
 script = ExtResource("1_f8i40")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2036305620]
@@ -26,7 +28,7 @@ shape = SubResource("CapsuleShape2D_g4v7s")
 [node name="BombCreationPoint" type="Marker2D" parent="." unique_id=1764285813]
 position = Vector2(16, 0)
 
-[node name="hitbox" type="Area2D" parent="." unique_id=1446174543]
+[node name="hitbox" type="Area2D" parent="." unique_id=1446174543 groups=["player"]]
 collision_layer = 2
 collision_mask = 7
 script = ExtResource("3_1euf4")

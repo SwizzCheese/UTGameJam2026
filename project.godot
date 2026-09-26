@@ -45,6 +45,8 @@ folder_colors={
 EntityRoot="So that players and enemies can add children to entity root for projectiles and such"
 PushableBodies=""
 PushableRigid=""
+player=""
+enemy=""
 
 [input]
 
