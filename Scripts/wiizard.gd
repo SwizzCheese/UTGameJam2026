@@ -81,16 +81,16 @@ func _physics_process(delta: float) -> void:
 func cast_spell():
 	#Check Current_Spell and cast it using the following statements
 	if current_spell == 1:
-		#Cast GravityShove, which moves objects?
+		#Cast GravityShove, which moves objects like a bomb
 		pass
 	elif current_spell == 2:
-		#Cast LightningBolt, Hits enemy in line of sight then hits the closest enemy in a few tiles
+		#Cast VampiricTouch, which is a short range attack that heals on hit
 		pass
 	elif current_spell == 3:
-		#Cast something idk bro
+		#Cast LightningBurst, which is a moderate range sphere of damage around the player
 		pass
 	elif current_spell == 4:
-		#Cast Wind, maybe makes the player faster and floatier?
+		#Cast Wind, maybe makes the player faster and floatier
 		pass
 	elif current_spell == 5:
 		#Cast SheerHeartAttack, just insta-kills enemy within line of sight
