@@ -22,6 +22,8 @@ var unlocked_spell_list : Array
 
 
 func _ready() -> void:
+	if BOMB == null:
+		print("BOMB is null!!!!!")
 	speed = 200
 	jump_velocity = -300
 	slipperiness = 20
