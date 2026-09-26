@@ -1,6 +1,7 @@
 class_name PushableCharBody extends CharacterBody2D
 
-#6767
+var lives: int = 4
+
 const SPEED = 300.0
 
 func _ready() -> void:
@@ -24,3 +25,11 @@ func apply_impulse_to_collisions(body:Node2D):
 		body.apply_impulse(velocity)
 		velocity = velocity-(velocity-Vector2(body.mass, body.mass))
 	pass
+
+
+func damaged(damage_array:Array[int]):
+	pass
+
+func destroy():
+	pass
+	
