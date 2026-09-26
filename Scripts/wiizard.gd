@@ -21,6 +21,7 @@ var spell_list : Array
 
 var unlocked_spell_list : Array
 
+@onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 @onready var hitbox: Area2D = $hitbox
 @onready var invincible_timer: Timer = $invincible_timer
@@ -48,6 +49,8 @@ func _physics_process(delta: float) -> void:
 	# Handle jump.
 	if Input.is_action_just_pressed("up") and is_on_floor():
 		velocity.y = jump_velocity
+		audio_stream_player_2d.play()
+		
 	
 	if Input.is_action_just_pressed("throw_bomb"):
 		throw_bomb()

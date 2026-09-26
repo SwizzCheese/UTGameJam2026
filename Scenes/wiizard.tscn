@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://nyroyh80wbw6" path="res://Assets/icon.svg" id="1_6bqba"]
 [ext_resource type="Script" uid="uid://dcf0jd51a8neu" path="res://Scripts/wiizard.gd" id="1_f8i40"]
 [ext_resource type="Script" uid="uid://bw4k58wv60dua" path="res://Scripts/wiizard_hitbox.gd" id="3_1euf4"]
+[ext_resource type="AudioStream" uid="uid://dq2my82jmld2u" path="res://Assets/Soundeffects/jump1.wav" id="4_2ex1u"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g4v7s"]
 radius = 8.0
@@ -38,3 +39,6 @@ shape = SubResource("RectangleShape2D_ttdc2")
 [node name="invincible_timer" type="Timer" parent="." unique_id=2065218456]
 wait_time = 0.5
 one_shot = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1857240126]
+stream = ExtResource("4_2ex1u")
