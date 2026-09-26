@@ -24,6 +24,10 @@ Global="*uid://c2i34pduy0yrb"
 window/size/viewport_width=576
 window/size/viewport_height=324
 
+[global_group]
+
+EntityRoot="So that players and enemies can add children to entity root for projectiles and such"
+
 [input]
 
 left={
