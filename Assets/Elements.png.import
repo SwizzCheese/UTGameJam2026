@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c00mfem341rd3"
-path="res://.godot/imported/BombWiizard_TileMap.png-e6010ca5cf1473bbe4ca899cdce191cd.ctex"
+uid="uid://clul4asn5r7i1"
+path="res://.godot/imported/Elements.png-8c069eef3fa6c209a39151560f420598.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/BombWiizard_TileMap.png"
-dest_files=["res://.godot/imported/BombWiizard_TileMap.png-e6010ca5cf1473bbe4ca899cdce191cd.ctex"]
+source_file="res://Assets/Elements.png"
+dest_files=["res://.godot/imported/Elements.png-8c069eef3fa6c209a39151560f420598.ctex"]
 
 [params]
 

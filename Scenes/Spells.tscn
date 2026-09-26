@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://denx065volq21"]
+
+[ext_resource type="Texture2D" uid="uid://clul4asn5r7i1" path="res://Assets/Elements.png" id="1_lj1ci"]
+[ext_resource type="Script" uid="uid://dxdf427qf0533" path="res://Scripts/modulatespells.gd" id="2_qy55t"]
+
+[node name="Spells" type="Node2D" unique_id=1598564330]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1876147856]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer" unique_id=2050260783]
+offset_right = 470.0
+offset_bottom = 241.0
+script = ExtResource("2_qy55t")
+
+[node name="Spell1" type="Sprite2D" parent="CanvasLayer/HBoxContainer" unique_id=826956848]
+texture = ExtResource("1_lj1ci")
+region_enabled = true
+region_rect = Rect2(0, 0, 15, 17)
+
+[node name="Spell2" type="Sprite2D" parent="CanvasLayer/HBoxContainer" unique_id=944730622]
+position = Vector2(32, 0)
+texture = ExtResource("1_lj1ci")
+region_enabled = true
+region_rect = Rect2(16, 0, 16, 16)
+
+[node name="Spell3" type="Sprite2D" parent="CanvasLayer/HBoxContainer" unique_id=126934506]
+position = Vector2(15, 0)
+texture = ExtResource("1_lj1ci")
+region_enabled = true
+region_rect = Rect2(0, 32, 17, 17)
+
+[node name="Spell4" type="Sprite2D" parent="CanvasLayer/HBoxContainer" unique_id=1379990873]
+position = Vector2(-15, 0)
+texture = ExtResource("1_lj1ci")
+region_enabled = true
+region_rect = Rect2(16, 16, 16, 16)

@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://bkggr3wmck33d"]
+
+[ext_resource type="PackedScene" uid="uid://dd37581vbvknq" path="res://Scenes/Enemies/pushable_charbody.tscn" id="1_x2seo"]
+[ext_resource type="Texture2D" uid="uid://nyroyh80wbw6" path="res://Assets/icon.svg" id="2_hfeuw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x2seo"]
+size = Vector2(16, 17)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2x7g1"]
+size = Vector2(18, 18)
+
+[node name="TestCharBody" unique_id=73494080 instance=ExtResource("1_x2seo")]
+
+[node name="Sprite2D" parent="." index="0" unique_id=487615212]
+modulate = Color(1, 0.13333334, 1, 1)
+scale = Vector2(0.13, 0.13)
+texture = ExtResource("2_hfeuw")
+
+[node name="CollisionShape2D" parent="." index="1" unique_id=935755363]
+shape = SubResource("RectangleShape2D_x2seo")
+
+[node name="ImpulseCollision" parent="Area2D" parent_id_path=PackedInt32Array(1989966584) index="0" unique_id=1317541111]
+shape = SubResource("RectangleShape2D_2x7g1")

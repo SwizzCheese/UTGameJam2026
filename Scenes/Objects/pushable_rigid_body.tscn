@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://dgc6ljw2xrqyf"]
+
+[ext_resource type="Script" uid="uid://dfcaej0unx46e" path="res://Scripts/pushable_rigid_body.gd" id="1_4w05h"]
+
+[node name="PushableRigidBody" type="RigidBody2D" unique_id=2013807626 groups=["PushableRigid"]]
+script = ExtResource("1_4w05h")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=763419289]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1987557417]
