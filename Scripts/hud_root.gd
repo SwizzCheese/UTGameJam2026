@@ -6,6 +6,7 @@ extends Control
 func _ready() -> void:
 	Global.player_died.connect(player_died)
 	Global.player_hurt.connect(redraw_hearts)
+	
 
 
 func redraw_hearts(lives: int) -> void:

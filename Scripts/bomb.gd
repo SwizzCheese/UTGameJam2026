@@ -5,7 +5,7 @@ extends RigidBody2D
 @export var direction : int = 1
 @export var time:float = 3
 
-var type:int = 0 #1 for fire, 2 for water, 3 - earth, 4 - air
+var type:int = 1 #1 for fire, 2 for water, 3 - earth, 4 - air
 var initial_velocity : Vector2 = Vector2(300,-250)
 var base_damage:int = 1
 
@@ -37,6 +37,9 @@ func _physics_process(delta: float) -> void:
 
 func explode() -> void:
 	#explode
-	#print("bomb exploded")
-	exploded.emit(1, global_position)
+	print("bomb exploded, type: "+ str(type))
+	exploded.emit(type, global_position)
 	queue_free()
+
+func give_type(spell_type:int):
+	type = spell_type

@@ -15,6 +15,7 @@ var last_direction : int = 1
 const BOMB : PackedScene = preload("uid://ctha3hokhls8e")
 
 var current_spell : int
+var current_bomb:int
 
 var spell_list : Array
 
@@ -54,8 +55,8 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("spell"):
 		cast_spell()
 	
-	if Input.is_action_just_pressed("change_spell"):
-		change_spell()
+	#if Input.is_action_just_pressed("change_spell"):
+	#	change_spell()
 	
 	
 	# Get the input direction and handle the movement/deceleration.
@@ -97,15 +98,16 @@ func cast_spell():
 	
 	
 
-func change_spell():
-	#Cycle through the unlocked spell list by one.
-	pass
+func change_spell(new_bomb:int):
+	current_bomb = new_bomb
 
 
 func throw_bomb():
 	#Instantiate a bomb object at BombCreationPoint with velocity away and up from player's global position
 	var bomb_instance = BOMB.instantiate()
 	bomb_instance.direction = last_direction
+	print("players current spell is: "+ str(current_bomb))
+	bomb_instance.give_type(current_bomb)
 	#get_tree().get_first_node_in_group("EntityRoot").add_child(bomb_instance)
 	get_tree().get_first_node_in_group("EntityRoot").add_entity(bomb_instance)
 	bomb_instance.global_transform = $BombCreationPoint.global_transform
