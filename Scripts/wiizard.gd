@@ -1,8 +1,8 @@
 class_name Player
 extends PushableCharBody
 
-var health : int
-var max_health : int
+var max_health : int = 3
+var health : int = max_health
 
 var speed : int
 var jump_velocity : int
@@ -20,6 +20,7 @@ var spell_list : Array
 
 var unlocked_spell_list : Array
 
+
 @onready var hitbox: Area2D = $hitbox
 @onready var invincible_timer: Timer = $invincible_timer
 
@@ -31,8 +32,8 @@ func _ready() -> void:
 	slipperiness = 20
 	gravity = 20
 	
-	hitbox.area_entered.connect(damaged)
 	invincible_timer.timeout.connect(invincible_timer_timout)
+	
 	#Check global for unlocked spell list!!
 	
 
@@ -116,14 +117,17 @@ func pushed(dir:Vector2, strength:float):
 
 func damaged(damage_array:Array[int]):
 	print("Player hit!!!!!!!!!!!!!!!!!!!!!!!!!11")
-	lives = lives - damage_array[0]
+	health = health - damage_array[0]
+	if health <= 0:
+		destroyed()
+	Global.player_hurt.emit(health)
 	$hitbox/hitbox_collision.set_deferred("disabled", true)
 	invincible_timer.start()
 	
-	if lives <= 0:
-		destroyed()
+	
 
 func destroyed():
+	Global.player_died.emit()
 	print("player dies")
 
 func invincible_timer_timout():

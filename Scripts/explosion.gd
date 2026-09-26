@@ -98,4 +98,4 @@ func damage(area:Node2D) -> void:
 			damage_array== [1, 0, 0, 1, 0]
 		elif type ==4:
 			damage_array== [1, 0, 0, 0, 1]
-		area.damaged(damage_array)
+		area.owner.damaged(damage_array)

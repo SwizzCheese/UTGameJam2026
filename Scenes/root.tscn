@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://c7wyvx70h35nu" path="res://Scripts/root.gd" id="1_i04dx"]
 [ext_resource type="Script" uid="uid://et6nuewvesj1" path="res://Scripts/entity_root.gd" id="2_8pvmw"]
 [ext_resource type="Script" uid="uid://bu4jtrlaawd13" path="res://Scripts/effect_root.gd" id="3_vnucn"]
+[ext_resource type="Script" uid="uid://bkg50g1x3s4d7" path="res://Scripts/hud_root.gd" id="4_c3mwy"]
 
 [node name="Root" type="Node" unique_id=1985020797]
 script = ExtResource("1_i04dx")
@@ -26,6 +27,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+script = ExtResource("4_c3mwy")
 
 [node name="PauseLayer" type="CanvasLayer" parent="." unique_id=1054137064]
 
