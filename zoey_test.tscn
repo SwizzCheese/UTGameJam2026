@@ -1,3 +1,8 @@
 [gd_scene format=3 uid="uid://cgmvlhmqu1ukj"]
 
+[ext_resource type="PackedScene" uid="uid://bclqrx1knslno" path="res://Scenes/explosion_base.tscn" id="1_744ye"]
+
 [node name="ZoeyTest" type="Node2D" unique_id=1974073417]
+
+[node name="ExplosionBase" parent="." unique_id=61808947 instance=ExtResource("1_744ye")]
+position = Vector2(225, 183)

@@ -15,6 +15,11 @@ run/main_scene="uid://b38vv7u4xfeuv"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://Assets/icon.svg"
 
+[global_group]
+
+PushableBodies=""
+PushableRigid=""
+
 [input]
 
 left={
