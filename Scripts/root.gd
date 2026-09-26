@@ -40,7 +40,8 @@ var max_spell = 3
 func _ready() -> void:
 	_init_player()
 	#Global.player.change_spell(1)
-	load_level(get_random_level(1))
+	Global.root = self
+	load_level(1)
 
 
 

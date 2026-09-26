@@ -3,9 +3,11 @@
 [ext_resource type="Script" uid="uid://c7fp7cwrjocxa" path="res://Scripts/test_level.gd" id="1_eglq2"]
 [ext_resource type="Texture2D" uid="uid://nyroyh80wbw6" path="res://Assets/icon.svg" id="1_iti4p"]
 [ext_resource type="PackedScene" uid="uid://bpnxt7kktyuba" path="res://Scenes/Enemies/base_enemy.tscn" id="3_3mqfk"]
+[ext_resource type="PackedScene" uid="uid://dq5m0dl6u1xng" path="res://Scenes/Objects/pillar.tscn" id="4_iixi8"]
+[ext_resource type="PackedScene" uid="uid://bq8nxm4acyj8w" path="res://Scenes/Objects/exit.tscn" id="5_cyadu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
-size = Vector2(128, 128)
+size = Vector2(251, 129)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yf5fn"]
 size = Vector2(20, 174)
@@ -20,6 +22,7 @@ position = Vector2(8, 176)
 texture = ExtResource("1_iti4p")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=512430377]
+position = Vector2(61.5, -0.5)
 shape = SubResource("RectangleShape2D_g4v7s")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" unique_id=683821221]
@@ -27,7 +30,7 @@ position = Vector2(-75, -127)
 shape = SubResource("RectangleShape2D_yf5fn")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D" unique_id=1051256781]
-position = Vector2(74, -105)
+position = Vector2(194, -99)
 shape = SubResource("RectangleShape2D_yf5fn")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=482340301]
@@ -36,3 +39,12 @@ shape = SubResource("RectangleShape2D_yf5fn")
 
 [node name="BaseEnemy" parent="." unique_id=1148401797 instance=ExtResource("3_3mqfk")]
 position = Vector2(27, 88)
+
+[node name="Pillar" parent="." unique_id=200004278 instance=ExtResource("4_iixi8")]
+position = Vector2(-42, 91)
+
+[node name="CountdownTimer" type="Timer" parent="." unique_id=1179299819]
+wait_time = 5.0
+
+[node name="Exit" parent="." unique_id=1418619089 instance=ExtResource("5_cyadu")]
+position = Vector2(175, 94)

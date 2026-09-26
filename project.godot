@@ -47,6 +47,7 @@ PushableBodies=""
 PushableRigid=""
 player=""
 enemy=""
+explosion="for objects to know the area touching them is an explosion"
 
 [input]
 

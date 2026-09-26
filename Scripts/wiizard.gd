@@ -36,7 +36,6 @@ func _ready() -> void:
 	invincible_timer.timeout.connect(invincible_timer_timeout)
 	
 	#Check global for unlocked spell list!!
-	
 
 
 
@@ -113,12 +112,12 @@ func throw_bomb():
 	bomb_instance.global_transform = $BombCreationPoint.global_transform
 	
 func pushed(dir:Vector2, strength:float):
-	print("HI, Wiizard PUSHED")
+	#print("HI, Wiizard PUSHED")
 	velocity += (dir * strength*10)
-	print("Wiizard VELOCITY CHANGED: "+ str(velocity))
+	#print("Wiizard VELOCITY CHANGED: "+ str(velocity))
 
 func damaged(damage_array:Array[int]):
-	print("Player hit!!!!!!!!!!!!!!!!!!!!!!!!!11")
+	#print("Player hit!!!!!!!!!!!!!!!!!!!!!!!!!11")
 	health = health - damage_array[0]
 	if health <= 0:
 		destroyed()
@@ -132,6 +131,7 @@ func damaged(damage_array:Array[int]):
 func destroyed():
 	Global.player_died.emit()
 	print("player dies")
+	queue_free()
 
 func invincible_timer_timeout():
 	$hitbox/hitbox_collision.set_deferred("disabled", false)

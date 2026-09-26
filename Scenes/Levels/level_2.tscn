@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://c7fp7cwrjocxa" path="res://Scripts/test_level.gd" id="1_7qxk6"]
 [ext_resource type="PackedScene" uid="uid://bpnxt7kktyuba" path="res://Scenes/Enemies/base_enemy.tscn" id="2_ucdhh"]
+[ext_resource type="PackedScene" uid="uid://dq5m0dl6u1xng" path="res://Scenes/Objects/pillar.tscn" id="3_oylv5"]
+[ext_resource type="PackedScene" uid="uid://bq8nxm4acyj8w" path="res://Scenes/Objects/exit.tscn" id="4_w2ac1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yf5fn"]
 size = Vector2(16, 106)
@@ -33,3 +35,12 @@ shape = SubResource("RectangleShape2D_yf5fn")
 
 [node name="BaseEnemy" parent="." unique_id=1148401797 instance=ExtResource("2_ucdhh")]
 position = Vector2(-48, 80)
+
+[node name="Pillar" parent="." unique_id=200004278 instance=ExtResource("3_oylv5")]
+position = Vector2(88, 80)
+
+[node name="CountdownTimer" type="Timer" parent="." unique_id=1517702865]
+wait_time = 5.0
+
+[node name="Exit" parent="." unique_id=1418619089 instance=ExtResource("4_w2ac1")]
+position = Vector2(-88, 88)
