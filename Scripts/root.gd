@@ -36,6 +36,7 @@ var max_hard_level : int = 6
 
 
 
+
 func _ready() -> void:
 	_init_player()
 	
@@ -57,6 +58,12 @@ func _init_player() -> void:
 		return
 	Global.player = player
 	entity_root.add_child(player)
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("pause"):
+		pause_root.show_pause_screen()
+	pass
+
 
 func load_level(level_num : int) -> void:
 	# Must be called during "Idle Time" so that the loading doesn't get messed up

@@ -6,8 +6,6 @@
 [ext_resource type="Script" uid="uid://bkg50g1x3s4d7" path="res://Scripts/hud_root.gd" id="4_c3mwy"]
 [ext_resource type="PackedScene" uid="uid://26grbe26lnus" path="res://Scenes/Health.tscn" id="5_4g5cr"]
 [ext_resource type="PackedScene" uid="uid://d3sg41wcmo0fx" path="res://Scenes/UI/death_screen.tscn" id="6_ckhy6"]
-[ext_resource type="Script" uid="uid://dmslk1yx6nlk8" path="res://Scripts/pause_root.gd" id="6_dun2r"]
-[ext_resource type="PackedScene" uid="uid://dxn7fjd34wm82" path="res://Scenes/UI/pause_screen.tscn" id="8_r3lo5"]
 
 [node name="Root" type="Node" unique_id=1985020797]
 script = ExtResource("1_i04dx")
@@ -42,12 +40,8 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-script = ExtResource("6_dun2r")
 
 [node name="DeathScreen" parent="PauseLayer/PauseRoot" unique_id=720936592 instance=ExtResource("6_ckhy6")]
-layout_mode = 1
-
-[node name="PauseScreen" parent="PauseLayer/PauseRoot" unique_id=2007371972 instance=ExtResource("8_r3lo5")]
 layout_mode = 1
 
 [node name="TransitionLayer" type="CanvasLayer" parent="." unique_id=846319615]
