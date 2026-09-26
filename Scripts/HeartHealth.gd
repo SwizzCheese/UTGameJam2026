@@ -35,7 +35,7 @@ func playerrep(rep: int):
 				
 func respawnz():
 	#respawns all the health back
-	for Health in heartz:
-		heartz[Health].visible		
+	for loop: int in Health:
+		heartz[Health].visible	= 1	
 					
 	
