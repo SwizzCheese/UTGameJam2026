@@ -7,7 +7,6 @@ radius = 1.0
 
 [node name="ExplosionBase" type="Node2D" unique_id=61808947 groups=["PushableBodies"]]
 script = ExtResource("1_3ky1t")
-time = 1.0
 max_radius = 50.0
 max_power = 100
 min_power = 20
@@ -20,3 +19,5 @@ min_push = 5.0
 shape = SubResource("CircleShape2D_a801j")
 
 [node name="Tweens" type="Node2D" parent="." unique_id=128636845]
+
+[node name="Timer" type="Timer" parent="." unique_id=1709725131]

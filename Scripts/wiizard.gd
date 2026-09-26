@@ -101,6 +101,7 @@ func throw_bomb():
 	#Instantiate a bomb object at BombCreationPoint with velocity away and up from player's global position
 	var bomb_instance = BOMB.instantiate()
 	bomb_instance.direction = last_direction
-	get_tree().get_first_node_in_group("EntityRoot").add_child(bomb_instance)
+	#get_tree().get_first_node_in_group("EntityRoot").add_child(bomb_instance)
+	get_tree().get_first_node_in_group("EntityRoot").add_entity(bomb_instance)
 	bomb_instance.global_transform = $BombCreationPoint.global_transform
 	

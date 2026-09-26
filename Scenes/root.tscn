@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://b38vv7u4xfeuv"]
 
 [ext_resource type="Script" uid="uid://c7wyvx70h35nu" path="res://Scripts/root.gd" id="1_i04dx"]
+[ext_resource type="Script" uid="uid://et6nuewvesj1" path="res://Scripts/entity_root.gd" id="2_8pvmw"]
+[ext_resource type="Script" uid="uid://bu4jtrlaawd13" path="res://Scripts/effect_root.gd" id="3_vnucn"]
 
 [node name="Root" type="Node" unique_id=1985020797]
 script = ExtResource("1_i04dx")
@@ -12,8 +14,10 @@ script = ExtResource("1_i04dx")
 [node name="LevelRoot" type="Node2D" parent="World" unique_id=441753519]
 
 [node name="EntityRoot" type="Node2D" parent="World" unique_id=1475541591 groups=["EntityRoot"]]
+script = ExtResource("2_8pvmw")
 
 [node name="EffectRoot" type="Node2D" parent="World" unique_id=664201914]
+script = ExtResource("3_vnucn")
 
 [node name="HudLayer" type="CanvasLayer" parent="." unique_id=677158463]
 

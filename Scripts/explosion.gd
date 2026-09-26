@@ -1,6 +1,7 @@
 class_name ExplosionBase extends Node2D
 
-@export var time:float #time it takes for explosion to reach max/min values
+@export var time:float  = .5#time it takes for explosion to reach max/min values
+
 
 @export var max_radius:float #maximum radius of blast
 var current_radius:float = 0
@@ -16,6 +17,7 @@ var current_power:float
 var current_push:float
 
 @onready var Explosion_Collision: CollisionShape2D = $ExplosionArea/Explosion_Collision
+@onready var timer: Timer = $Timer
 
 #TWEENS
 var radius_tween:Tween
@@ -28,6 +30,13 @@ func _ready() -> void:
 	current_power = max_power
 	current_push = max_push
 	$ExplosionArea.body_entered.connect(on_entered)
+	
+	#timer
+	timer.wait_time = time
+	timer.timeout.connect(timer_timout)
+	timer.start()
+	
+	#tweens
 	radius_tween = create_tween()
 	power_tween = create_tween()
 	push_tween = create_tween()
@@ -52,3 +61,6 @@ func on_entered(body:Node2D):
 		body.pushed(dir.normalized(), current_push)
 		#apply_impulse((strength * direction, origin of impulse)
 		pass
+
+func timer_timout() -> void:
+	queue_free()
