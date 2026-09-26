@@ -35,14 +35,24 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
 	Explosion_Collision.scale = Vector2(current_radius, current_radius)
-	print("radius is : "+ str(current_radius))
-	print("power is : "+ str(current_power))
+	#print("radius is : "+ str(current_radius))
+	#print("power is : "+ str(current_power))
 
-func on_entered(body:Node2D):
-	if body.is_in_group("PushableBodies"):
-		pass
-	if body.is_in_group("PushableRigid"):
-		body.pushed()
-		#apply_impulse((strength * direction, origin of impulse)
-		pass
+#func on_entered(body):
+#	var dir = body.global_position - global_position
+#	if body.is_in_group("PushableBodies"):
+#		(body as PushableBody).pushed(dir, current_push)
+#		#velocity += dir* current_push
+#	if body.is_in_group("PushableRigid"):
+#		body.pushed(dir.normalized(), current_push)
+#		#apply_impulse((strength * direction, origin of impulse)
+#		pass
 		#apply force(direction, power)
+func on_entered(body:Node2D):
+	var dir = body.global_position - global_position
+	if body.is_in_group("PushableBodies"):
+		body.pushed(dir.normalized(), current_push)
+		#velocity += dir* current_push
+	if body.is_in_group("PushableRigid"):
+		body.pushed((current_push * dir.normalized()), global_position)
+		#apply_impulse((strength * direction, origin of impulse)

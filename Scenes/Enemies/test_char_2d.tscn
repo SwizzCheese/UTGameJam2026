@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://r44x8b5sigmd"]
+
+[ext_resource type="PackedScene" uid="uid://b0n2ypu1lgo3e" path="res://Scenes/Enemies/pushable_char_body.tscn" id="1_gkqlt"]
+[ext_resource type="Script" uid="uid://cec467wx3ir41" path="res://Scripts/Enemies/test_char_2d.gd" id="2_o680b"]
+[ext_resource type="Texture2D" uid="uid://nyroyh80wbw6" path="res://Assets/icon.svg" id="3_7phys"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3fvgt"]
+size = Vector2(36, 34)
+
+[node name="TestChar2D" unique_id=73494080 instance=ExtResource("1_gkqlt")]
+script = ExtResource("2_o680b")
+
+[node name="Sprite2D" parent="." index="0" unique_id=487615212]
+modulate = Color(1, 0.5019608, 1, 1)
+scale = Vector2(0.3046875, 0.3046875)
+texture = ExtResource("3_7phys")
+
+[node name="CollisionShape2D" parent="." index="1" unique_id=935755363]
+shape = SubResource("RectangleShape2D_3fvgt")

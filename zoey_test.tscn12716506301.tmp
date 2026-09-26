@@ -32,13 +32,13 @@ texture = ExtResource("2_wpyb0")
 [node name="Node2D" type="Node2D" parent="." unique_id=1861103610]
 
 [node name="TestRigidBody3" parent="Node2D" unique_id=2013807626 instance=ExtResource("3_xxtq0")]
-position = Vector2(319, 193)
+position = Vector2(317, 195)
 
 [node name="TestRigidBody" parent="Node2D" unique_id=1381511532 instance=ExtResource("3_xxtq0")]
-position = Vector2(317, 176)
+position = Vector2(317, 179)
 
 [node name="TestRigidBody2" parent="Node2D" unique_id=1717772676 instance=ExtResource("3_xxtq0")]
-position = Vector2(187, 192)
+position = Vector2(188, 195)
 
 [node name="TestChar2D" parent="." unique_id=73494080 instance=ExtResource("4_sawlt")]
 position = Vector2(218, 183)

@@ -1,5 +1,7 @@
 class_name PushableRigidBody extends RigidBody2D
 
-func pushed(vel:Vector2, origin:Vector2):
+
+func pushed(magnitude:Vector2, origin: Vector2): #origin:Vector2
 	#vel = velocity = power * direction, origin = origin of blast
-	apply_impulse(vel, origin)
+	print("HI, RIGID BODY PUSHED")
+	apply_impulse(magnitude, origin)
