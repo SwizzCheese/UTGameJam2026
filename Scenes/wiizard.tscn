@@ -1,12 +1,14 @@
 [gd_scene format=3 uid="uid://dntp6ubf0fjog"]
 
 [ext_resource type="Texture2D" uid="uid://nyroyh80wbw6" path="res://Assets/icon.svg" id="1_6bqba"]
+[ext_resource type="Script" uid="uid://dcf0jd51a8neu" path="res://Scripts/wiizard.gd" id="1_f8i40"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g4v7s"]
 radius = 8.0
 height = 32.0
 
 [node name="Wiizard" type="CharacterBody2D" unique_id=789476140]
+script = ExtResource("1_f8i40")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2036305620]
 
@@ -18,3 +20,4 @@ texture = ExtResource("1_6bqba")
 shape = SubResource("CapsuleShape2D_g4v7s")
 
 [node name="BombCreationPoint" type="Marker2D" parent="." unique_id=1764285813]
+position = Vector2(16, 0)
