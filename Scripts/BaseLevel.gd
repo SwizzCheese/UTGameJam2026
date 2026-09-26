@@ -12,7 +12,7 @@ var i_won : bool
 @abstract func get_default_player_spawn() -> Vector2
 
 ## Provides the camera used in the level
-@abstract func get_player_camera() -> Camera2D
+#@abstract func get_player_camera() -> Camera2D
 
 ## Counts down the pillar count until triggering end-level sequence
 @abstract func pillar_destroyed()

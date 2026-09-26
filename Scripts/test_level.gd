@@ -1,6 +1,6 @@
 extends BaseLevel
 
-@onready var camera_2d: Camera2D = $Camera2D
+#@onready var camera_2d: Camera2D = $Camera2D
 @onready var marker_2d: Marker2D = $PlayerSpawn
 @onready var countdown_timer : Timer = $CountdownTimer
 @onready var exit : Node2D = $Exit
@@ -17,8 +17,8 @@ func get_default_player_spawn() -> Vector2:
 	return marker_2d.position
 
 ## Provides the camera used in the level:
-func get_player_camera() -> Camera2D:
-	return camera_2d
+#func get_player_camera() -> Camera2D:
+	#return camera_2d
 
 
 func pillar_destroyed():
@@ -33,16 +33,19 @@ func start_countdown():
 	exit.open_exit()
 
 func countdown_failed():
-	if !i_won:
+	if !i_won and Global.player != null:
 		Global.player.destroyed()
 	countdown_timer.stop()
 
 func level_cleared():
 	i_won = true
 	countdown_timer.stop()
+	Global.player.visible = false
 	#play the exploding floor animation
 	#show the results screen
 	#load the level below
 	#Await the continue button being pressed
-	#place the player in the new level and scroll the camera down
-	Global.root.load_level(level_num + 2)
+	#place the player in the new level, show the player and scroll the camera down
+	
+	Global.root.load_level(level_num + 1)
+	

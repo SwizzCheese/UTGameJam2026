@@ -9,14 +9,13 @@
 size = Vector2(16, 106)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
-size = Vector2(240, 20)
+size = Vector2(576, 60)
 
 [node name="level_2" type="Node2D" unique_id=991560833]
 script = ExtResource("1_7qxk6")
+level_num = 2
 
 [node name="PlayerSpawn" type="Marker2D" parent="." unique_id=1557754488]
-
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1556566259]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1628896644]
 position = Vector2(0, 112)
@@ -27,6 +26,7 @@ position = Vector2(113, -65)
 shape = SubResource("RectangleShape2D_yf5fn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1441127437]
+position = Vector2(0, 20)
 shape = SubResource("RectangleShape2D_g4v7s")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" unique_id=243844765]

@@ -101,7 +101,8 @@ func _deferred_load_level(level_num) -> void:
 	#allow level to fully process before accessing it
 	await get_tree().process_frame
 	_place_player_at_level_spawn()
-	_setup_level_camera()
+	Global.player.visible = true
+	#_setup_level_camera()
 
 
 

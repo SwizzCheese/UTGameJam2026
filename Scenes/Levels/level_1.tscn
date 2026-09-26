@@ -7,22 +7,25 @@
 [ext_resource type="PackedScene" uid="uid://bq8nxm4acyj8w" path="res://Scenes/Objects/exit.tscn" id="5_cyadu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
-size = Vector2(251, 129)
+size = Vector2(576, 51)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yf5fn"]
 size = Vector2(20, 174)
 
 [node name="TestLevel" type="Node2D" unique_id=962404041]
 script = ExtResource("1_eglq2")
+level_num = 1
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1815871801]
 position = Vector2(8, 176)
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D" unique_id=1430922940]
+position = Vector2(-7.5, -40)
+scale = Vector2(4.4765625, 0.375)
 texture = ExtResource("1_iti4p")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=512430377]
-position = Vector2(61.5, -0.5)
+position = Vector2(-8, -39.5)
 shape = SubResource("RectangleShape2D_g4v7s")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" unique_id=683821221]
@@ -32,8 +35,6 @@ shape = SubResource("RectangleShape2D_yf5fn")
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D" unique_id=1051256781]
 position = Vector2(194, -99)
 shape = SubResource("RectangleShape2D_yf5fn")
-
-[node name="Camera2D" type="Camera2D" parent="." unique_id=482340301]
 
 [node name="PlayerSpawn" type="Marker2D" parent="." unique_id=932999925]
 
