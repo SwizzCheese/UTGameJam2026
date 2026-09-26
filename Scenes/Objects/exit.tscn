@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://bq8nxm4acyj8w"]
+
+[ext_resource type="Texture2D" uid="uid://nyroyh80wbw6" path="res://Assets/icon.svg" id="1_un0jh"]
+[ext_resource type="Script" uid="uid://cip8ynyw7naia" path="res://Scripts/exit.gd" id="1_v0lb2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
+size = Vector2(32, 32)
+
+[node name="Exit" type="Node2D" unique_id=1418619089]
+script = ExtResource("1_v0lb2")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1705553801]
+modulate = Color(0.812357, 0.41340634, 1, 1)
+position = Vector2(2.3841858e-07, -4.4703484e-07)
+scale = Vector2(0.203125, 0.25)
+texture = ExtResource("1_un0jh")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=463617119]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1079687988]
+shape = SubResource("RectangleShape2D_g4v7s")
+debug_color = Color(0.7979422, 0.05061982, 0.9999998, 0.41960785)
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]

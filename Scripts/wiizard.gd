@@ -33,10 +33,9 @@ func _ready() -> void:
 	slipperiness = 20
 	gravity = 20
 	
-	invincible_timer.timeout.connect(invincible_timer_timout)
+	invincible_timer.timeout.connect(invincible_timer_timeout)
 	
 	#Check global for unlocked spell list!!
-	
 
 
 
@@ -81,16 +80,16 @@ func _physics_process(delta: float) -> void:
 func cast_spell():
 	#Check Current_Spell and cast it using the following statements
 	if current_spell == 1:
-		#Cast GravityShove, which moves objects?
+		#Cast GravityShove, which moves objects like a bomb
 		pass
 	elif current_spell == 2:
-		#Cast LightningBolt, Hits enemy in line of sight then hits the closest enemy in a few tiles
+		#Cast VampiricTouch, which is a short range attack that heals on hit
 		pass
 	elif current_spell == 3:
-		#Cast something idk bro
+		#Cast LightningBurst, which is a moderate range sphere of damage around the player
 		pass
 	elif current_spell == 4:
-		#Cast Wind, maybe makes the player faster and floatier?
+		#Cast Wind, maybe makes the player faster and floatier
 		pass
 	elif current_spell == 5:
 		#Cast SheerHeartAttack, just insta-kills enemy within line of sight
@@ -113,12 +112,12 @@ func throw_bomb():
 	bomb_instance.global_transform = $BombCreationPoint.global_transform
 	
 func pushed(dir:Vector2, strength:float):
-	print("HI, Wiizard PUSHED")
+	#print("HI, Wiizard PUSHED")
 	velocity += (dir * strength*10)
-	print("Wiizard VELOCITY CHANGED: "+ str(velocity))
+	#print("Wiizard VELOCITY CHANGED: "+ str(velocity))
 
 func damaged(damage_array:Array[int]):
-	print("Player hit!!!!!!!!!!!!!!!!!!!!!!!!!11")
+	#print("Player hit!!!!!!!!!!!!!!!!!!!!!!!!!11")
 	health = health - damage_array[0]
 	if health <= 0:
 		destroyed()
@@ -132,6 +131,7 @@ func damaged(damage_array:Array[int]):
 func destroyed():
 	Global.player_died.emit()
 	print("player dies")
+	queue_free()
 
-func invincible_timer_timout():
+func invincible_timer_timeout():
 	$hitbox/hitbox_collision.set_deferred("disabled", false)

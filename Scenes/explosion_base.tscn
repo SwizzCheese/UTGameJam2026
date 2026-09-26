@@ -9,15 +9,16 @@ radius = 1.0
 [node name="ExplosionBase" type="Node2D" unique_id=61808947 groups=["PushableBodies"]]
 script = ExtResource("1_3ky1t")
 max_radius = 100.0
-max_power = 100
+max_power = 80
 min_power = 20
-max_push = 150.0
+max_push = 70.0
 min_push = 5.0
 
-[node name="ExplosionArea" type="Area2D" parent="." unique_id=1648576931]
-collision_mask = 15
+[node name="ExplosionArea" type="Area2D" parent="." unique_id=1648576931 groups=["explosion"]]
+collision_layer = 32
+collision_mask = 14
 
-[node name="Explosion_Collision" type="CollisionShape2D" parent="ExplosionArea" unique_id=2049857158]
+[node name="Explosion_Collision" type="CollisionShape2D" parent="ExplosionArea" unique_id=2049857158 groups=["explosion"]]
 shape = SubResource("CircleShape2D_a801j")
 
 [node name="Tweens" type="Node2D" parent="." unique_id=128636845]

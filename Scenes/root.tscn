@@ -24,6 +24,8 @@ script = ExtResource("2_8pvmw")
 [node name="EffectRoot" type="Node2D" parent="World" unique_id=664201914]
 script = ExtResource("3_vnucn")
 
+[node name="Camera2D" type="Camera2D" parent="World" unique_id=1496624134]
+
 [node name="HudLayer" type="CanvasLayer" parent="." unique_id=677158463]
 
 [node name="HudRoot" type="Control" parent="HudLayer" unique_id=556681080]
@@ -54,9 +56,23 @@ layout_mode = 1
 
 [node name="TransitionRoot" type="Control" parent="TransitionLayer" unique_id=1225863235]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchor_left = -0.5
+anchor_top = -0.49500003
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 288.0
+offset_top = 160.38
+offset_right = -248.0
+offset_bottom = -122.0
+
+[node name="Label" type="Label" parent="TransitionLayer/TransitionRoot" unique_id=1404847169]
+visible = false
+layout_mode = 0
+offset_left = -46.0
+offset_top = -12.0
+offset_right = 57.0
+offset_bottom = 11.0
+text = "LEVEL CLEAR!"
 
 [node name="MenuLayer" type="CanvasLayer" parent="." unique_id=1070006116]
 
