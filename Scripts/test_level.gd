@@ -8,7 +8,6 @@ extends BaseLevel
 signal confirm
 
 func _ready() -> void:
-	pillars = 1
 	countdown_timer.timeout.connect(countdown_failed)
 	i_won = false
 	

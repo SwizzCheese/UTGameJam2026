@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://del54vdie50ko" path="res://Assets/BombWiizard_MainCharacterSheet.png" id="4_t60q5"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g4v7s"]
-radius = 8.0
+radius = 7.0
 height = 32.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ttdc2"]
