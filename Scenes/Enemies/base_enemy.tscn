@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://bpnxt7kktyuba"]
+
+[ext_resource type="Script" uid="uid://qajimfn3321c" path="res://Scripts/base_enemy.gd" id="1_hkymu"]
+[ext_resource type="Texture2D" uid="uid://nyroyh80wbw6" path="res://Assets/icon.svg" id="2_b3u8b"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g4v7s"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
+size = Vector2(22, 32)
+
+[node name="BaseEnemy" type="CharacterBody2D" unique_id=1148401797 groups=["enemy"]]
+collision_layer = 8
+collision_mask = 9
+script = ExtResource("1_hkymu")
+metadata/_custom_type_script = "uid://dwwlfvsw84jf7"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1227632157]
+modulate = Color(3.0864043, 0, 0, 1)
+position = Vector2(1.9073486e-06, 1.9073486e-06)
+scale = Vector2(0.15625, 0.234375)
+texture = ExtResource("2_b3u8b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1211965126]
+shape = SubResource("CapsuleShape2D_g4v7s")
+
+[node name="hitbox" type="Area2D" parent="." unique_id=159798388]
+collision_layer = 8
+collision_mask = 34
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox" unique_id=765544361]
+shape = SubResource("RectangleShape2D_g4v7s")
+
+[node name="WallDetector" type="RayCast2D" parent="." unique_id=729549482]
+target_position = Vector2(15, 0)
+collision_mask = 3
+
+[node name="PushTimer" type="Timer" parent="." unique_id=1963283621]
+
+[connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]
