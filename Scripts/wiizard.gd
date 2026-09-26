@@ -18,15 +18,18 @@ const BOMB : PackedScene = preload("uid://ctha3hokhls8e")
 
 var current_spell : int
 var current_bomb:int
+var chucking : bool
+var hurting : bool
 
 var spell_list : Array
 
 var unlocked_spell_list : Array
 
 @onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
-
+@onready var animation : AnimationPlayer = $AnimationPlayer
 @onready var hitbox: Area2D = $hitbox
 @onready var invincible_timer: Timer = $invincible_timer
+@onready var chuck_animation_timer : Timer = $ChuckAnimationTimer
 
 func _ready() -> void:
 	if BOMB == null:
@@ -37,9 +40,11 @@ func _ready() -> void:
 	gravity = 20
 	
 	in_cutscene = false
+	chucking = false
+	hurting = false
 	
 	invincible_timer.timeout.connect(invincible_timer_timeout)
-	
+	chuck_animation_timer.timeout.connect(chuck_animation_timer_timeout)
 	#Check global for unlocked spell list!!
 
 
@@ -74,13 +79,31 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, slipperiness)
 	if Input.is_action_just_pressed("left"):
 		last_direction = -1
+		$Sprite2D.flip_h  = true
 		$BombCreationPoint.position = Vector2(-16.0,0)
 	if Input.is_action_just_pressed("right"):
 		last_direction = 1
+		$Sprite2D.flip_h  = false
 		$BombCreationPoint.position = Vector2(16.0,0)
 	
-	move_and_slide()
 	
+	if hurting:
+		animation.play("hurt")
+	elif !is_on_floor() and !chucking:
+		animation.play("jump")
+	elif !is_on_floor() and chucking:
+		animation.play("jump_shoot")
+	elif direction and !chucking:
+		animation.play("run")
+	elif direction and chucking:
+		animation.play("run_shoot")
+	elif !direction and chucking:
+		animation.play("idle_shoot")
+	else:
+		animation.play("idle")
+	
+	
+	move_and_slide()
 
 
 
@@ -110,6 +133,8 @@ func change_spell(new_bomb:int):
 
 func throw_bomb():
 	#Instantiate a bomb object at BombCreationPoint with velocity away and up from player's global position
+	chucking = true
+	chuck_animation_timer.start()
 	var bomb_instance = BOMB.instantiate()
 	bomb_instance.direction = last_direction
 	print("players current spell is: "+ str(current_bomb))
@@ -124,7 +149,7 @@ func pushed(dir:Vector2, strength:float):
 	#print("Wiizard VELOCITY CHANGED: "+ str(velocity))
 
 func damaged(damage_array:Array[int]):
-	#print("Player hit!!!!!!!!!!!!!!!!!!!!!!!!!11")
+	hurting = true
 	health = health - damage_array[0]
 	if health <= 0:
 		destroyed()
@@ -141,4 +166,8 @@ func destroyed():
 	queue_free()
 
 func invincible_timer_timeout():
+	hurting = false
 	$hitbox/hitbox_collision.set_deferred("disabled", false)
+
+func chuck_animation_timer_timeout():
+	chucking = false
