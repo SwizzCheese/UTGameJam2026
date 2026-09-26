@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://bh248gqoo6vbh"]
+
+[ext_resource type="PackedScene" uid="uid://dgc6ljw2xrqyf" path="res://Scenes/Objects/pushable_rigid_body.tscn" id="1_x0bfw"]
+[ext_resource type="Texture2D" uid="uid://nyroyh80wbw6" path="res://Assets/icon.svg" id="2_k3v3c"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_xxtq0"]
+bounce = 0.5
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_koufq"]
+
+[node name="TestRigidBody" unique_id=2013807626 instance=ExtResource("1_x0bfw")]
+mass = 0.05
+physics_material_override = SubResource("PhysicsMaterial_xxtq0")
+
+[node name="Sprite2D" parent="." index="0" unique_id=763419289]
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_k3v3c")
+
+[node name="CollisionShape2D" parent="." index="1" unique_id=1987557417]
+shape = SubResource("RectangleShape2D_koufq")

@@ -8,12 +8,12 @@ var current_radius:float = 0
 #damage
 @export var max_power: int #max power of explosion (beginning of explosion)
 @export var min_power: int #min power of explosion (end of explosion)
-var current_power:float = max_power
+var current_power:float
 
 #push force
 @export var max_push: float #max push of explosion (beginning of explosion)
 @export var min_push: float #min push of explosion (end of explosion)
-var current_push:float = max_push
+var current_push:float
 
 @onready var Explosion_Collision: CollisionShape2D = $ExplosionArea/Explosion_Collision
 
@@ -24,6 +24,9 @@ var push_tween:Tween
 
 
 func _ready() -> void:
+	
+	current_power = max_power
+	current_push = max_push
 	$ExplosionArea.body_entered.connect(on_entered)
 	radius_tween = create_tween()
 	power_tween = create_tween()
@@ -35,14 +38,16 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
 	Explosion_Collision.scale = Vector2(current_radius, current_radius)
-	print("radius is : "+ str(current_radius))
-	print("power is : "+ str(current_power))
+	#print("radius is : "+ str(current_radius))
+	#print("power is : "+ str(current_power))
+	print("push is : "+ str(current_push))
 
 func on_entered(body:Node2D):
+	var dir:Vector2 = body.global_position - self.global_position
 	if body.is_in_group("PushableBodies"):
 		pass
 	if body.is_in_group("PushableRigid"):
-		body.pushed()
+		body.pushed(dir.normalized(), current_push)
 		#apply_impulse((strength * direction, origin of impulse)
 		pass
 		#apply force(direction, power)

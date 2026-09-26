@@ -11,7 +11,7 @@ time = 1.0
 max_radius = 50.0
 max_power = 100
 min_power = 20
-max_push = 50.0
+max_push = 150.0
 min_push = 5.0
 
 [node name="ExplosionArea" type="Area2D" parent="." unique_id=1648576931]
