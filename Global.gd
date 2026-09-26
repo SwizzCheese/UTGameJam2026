@@ -6,3 +6,5 @@ var player : Player
 
 signal player_hurt(int)
 signal player_died
+
+signal add_entity(entity:Node2D)

@@ -5,6 +5,8 @@ extends Node2D
 func add_entity(entity:Node2D):
 	if entity is Bomb:
 		entity.exploded.connect(bomb_exploded)
+	if entity is FurniturePiece:
+		print("furniture piece added")
 	add_child(entity)
 	print("entity added")
 

@@ -58,7 +58,7 @@ func _physics_process(delta: float) -> void:
 func on_entered(body:Node2D):
 	print(body.get_class())
 	var dir:Vector2 = body.global_position - self.global_position
-	if body is PushableCharBody:
+	if body is Player:
 		print("I SEE YOU: "+ str(body))
 		body.pushed(dir.normalized(), current_push)
 	if body.is_in_group("PushableRigid"):
