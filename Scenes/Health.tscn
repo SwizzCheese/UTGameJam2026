@@ -1,9 +1,11 @@
 [gd_scene format=3 uid="uid://26grbe26lnus"]
 
 [ext_resource type="Script" uid="uid://cn402qmtlpdkb" path="res://Scripts/HeartHealth.gd" id="1_2docl"]
+[ext_resource type="Script" uid="uid://cy20va8dqbwg4" path="res://Scripts/health.gd" id="1_3e1s5"]
 [ext_resource type="Texture2D" uid="uid://d2c1df5bbyl3n" path="res://Assets/Heart.png" id="2_3e1s5"]
 
 [node name="Health" type="Node2D" unique_id=802376835]
+script = ExtResource("1_3e1s5")
 
 [node name="Health" type="CanvasLayer" parent="." unique_id=1732881610]
 
@@ -19,6 +21,8 @@ texture = ExtResource("2_3e1s5")
 
 [node name="Heart2" type="TextureRect" parent="Health/HBoxContainer" unique_id=731122612]
 layout_mode = 2
+texture = ExtResource("2_3e1s5")
 
 [node name="Heart3" type="TextureRect" parent="Health/HBoxContainer" unique_id=1812133854]
 layout_mode = 2
+texture = ExtResource("2_3e1s5")

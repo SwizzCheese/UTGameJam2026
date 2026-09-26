@@ -1,8 +1,8 @@
 class_name Player
-extends CharacterBody2D
+extends PushableCharBody
 
-var health : int
-var max_health : int
+var max_health : int = 3
+var health : int = max_health
 
 var speed : int
 var jump_velocity : int
@@ -15,11 +15,15 @@ var last_direction : int = 1
 const BOMB : PackedScene = preload("uid://ctha3hokhls8e")
 
 var current_spell : int
+var current_bomb:int
 
 var spell_list : Array
 
 var unlocked_spell_list : Array
 
+
+@onready var hitbox: Area2D = $hitbox
+@onready var invincible_timer: Timer = $invincible_timer
 
 func _ready() -> void:
 	if BOMB == null:
@@ -28,6 +32,8 @@ func _ready() -> void:
 	jump_velocity = -300
 	slipperiness = 20
 	gravity = 20
+	
+	invincible_timer.timeout.connect(invincible_timer_timout)
 	
 	#Check global for unlocked spell list!!
 	
@@ -49,15 +55,15 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("spell"):
 		cast_spell()
 	
-	if Input.is_action_just_pressed("change_spell"):
-		change_spell()
+	#if Input.is_action_just_pressed("change_spell"):
+	#	change_spell()
 	
 	
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction := Input.get_axis("left", "right")
 	if direction:
-		velocity.x = direction * speed
+		velocity.x = move_toward(velocity.x, direction * speed, slipperiness)
 	else:
 		velocity.x = move_toward(velocity.x, 0, slipperiness)
 	if Input.is_action_just_pressed("left"):
@@ -92,15 +98,40 @@ func cast_spell():
 	
 	
 
-func change_spell():
-	#Cycle through the unlocked spell list by one.
-	pass
+func change_spell(new_bomb:int):
+	current_bomb = new_bomb
 
 
 func throw_bomb():
 	#Instantiate a bomb object at BombCreationPoint with velocity away and up from player's global position
 	var bomb_instance = BOMB.instantiate()
 	bomb_instance.direction = last_direction
-	get_tree().get_first_node_in_group("EntityRoot").add_child(bomb_instance)
+	print("players current spell is: "+ str(current_bomb))
+	bomb_instance.give_type(current_bomb)
+	#get_tree().get_first_node_in_group("EntityRoot").add_child(bomb_instance)
+	get_tree().get_first_node_in_group("EntityRoot").add_entity(bomb_instance)
 	bomb_instance.global_transform = $BombCreationPoint.global_transform
 	
+func pushed(dir:Vector2, strength:float):
+	print("HI, Wiizard PUSHED")
+	velocity += (dir * strength*10)
+	print("Wiizard VELOCITY CHANGED: "+ str(velocity))
+
+func damaged(damage_array:Array[int]):
+	print("Player hit!!!!!!!!!!!!!!!!!!!!!!!!!11")
+	health = health - damage_array[0]
+	if health <= 0:
+		destroyed()
+	else:
+		Global.player_hurt.emit(health)
+	$hitbox/hitbox_collision.set_deferred("disabled", true)
+	invincible_timer.start()
+	
+	
+
+func destroyed():
+	Global.player_died.emit()
+	print("player dies")
+
+func invincible_timer_timout():
+	$hitbox/hitbox_collision.set_deferred("disabled", false)

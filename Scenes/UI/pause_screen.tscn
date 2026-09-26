@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://dxn7fjd34wm82"]
+
+[ext_resource type="Script" uid="uid://binyeu6rru6b3" path="res://Scripts/pause_screen.gd" id="1_tqq60"]
+
+[node name="PauseScreen" type="Control" unique_id=2007371972]
+process_mode = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tqq60")
+
+[node name="Button" type="Button" parent="." unique_id=1699017255]
+layout_mode = 0
+offset_left = 567.0
+offset_top = 381.0
+offset_right = 625.0
+offset_bottom = 412.0
+text = "return"
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=750909067]
+layout_mode = 0
+offset_right = 1165.0
+offset_bottom = 660.0
+color = Color(1, 0.48235294, 1, 1)
+
+[node name="Label" type="Label" parent="ColorRect" unique_id=1016482210]
+layout_mode = 0
+offset_left = 511.0
+offset_top = 301.0
+offset_right = 658.0
+offset_bottom = 324.0
+text = "\"I cast Pause Time\""

@@ -1,7 +1,0 @@
-[gd_scene format=3 uid="uid://dbe1jqm1wau7p"]
-
-[ext_resource type="PackedScene" uid="uid://dgc6ljw2xrqyf" path="res://Scenes/Objects/pushable_rigid_body.tscn" id="1_kbk43"]
-[ext_resource type="Script" uid="uid://dwsd3d4nxfrf2" path="res://Scenes/Enemies/rigid_character.gd" id="2_bpoel"]
-
-[node name="RigidCharacter" unique_id=2013807626 instance=ExtResource("1_kbk43")]
-script = ExtResource("2_bpoel")
