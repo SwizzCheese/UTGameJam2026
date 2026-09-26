@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cre7qmjxkhd1x"
-path="res://.godot/imported/OrangeArrow.png-cd43c2cd30a20fee990638bd56b5121f.ctex"
+uid="uid://fdksycocqodm"
+path="res://.godot/imported/BombWiizard_BombSheet.png-8beb10493b7d1a176b4af927ca36d93e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/OrangeArrow.png"
-dest_files=["res://.godot/imported/OrangeArrow.png-cd43c2cd30a20fee990638bd56b5121f.ctex"]
+source_file="res://Assets/BombWiizard_BombSheet.png"
+dest_files=["res://.godot/imported/BombWiizard_BombSheet.png-8beb10493b7d1a176b4af927ca36d93e.ctex"]
 
 [params]
 
