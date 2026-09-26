@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://26grbe26lnus"]
 
-[ext_resource type="Script" uid="uid://7ip11qrpqeyw" path="res://Scripts/HeartHealth.gd" id="1_2docl"]
-[ext_resource type="Texture2D" uid="uid://n4lqnaeqepjm" path="res://Assets/Heart.png" id="2_3e1s5"]
+[ext_resource type="Script" uid="uid://cn402qmtlpdkb" path="res://Scripts/HeartHealth.gd" id="1_2docl"]
+[ext_resource type="Texture2D" uid="uid://d2c1df5bbyl3n" path="res://Assets/Heart.png" id="2_3e1s5"]
 
 [node name="Health" type="Node2D" unique_id=802376835]
 
