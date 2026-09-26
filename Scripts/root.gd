@@ -1,4 +1,4 @@
-extends Node2D
+extends Node
 
 
 var scene_path:String = "res://Scenes/Levels/"

@@ -2,5 +2,23 @@
 
 [ext_resource type="Script" uid="uid://c7wyvx70h35nu" path="res://Scripts/root.gd" id="1_i04dx"]
 
-[node name="Root" type="Node2D" unique_id=1245297292]
+[node name="Root" type="Node" unique_id=1985020797]
 script = ExtResource("1_i04dx")
+
+[node name="Systems" type="Node" parent="." unique_id=387909024]
+
+[node name="World" type="Node2D" parent="." unique_id=1268933747]
+
+[node name="LevelRoot" type="Node2D" parent="World" unique_id=441753519]
+
+[node name="EntityRoot" type="Node2D" parent="World" unique_id=1475541591]
+
+[node name="EffectRoot" type="Node2D" parent="World" unique_id=664201914]
+
+[node name="HUDLayer" type="CanvasLayer" parent="." unique_id=677158463]
+
+[node name="PauseLayer" type="CanvasLayer" parent="." unique_id=1054137064]
+
+[node name="TransitionLayer" type="CanvasLayer" parent="." unique_id=846319615]
+
+[node name="MenuLayer" type="CanvasLayer" parent="." unique_id=1070006116]
