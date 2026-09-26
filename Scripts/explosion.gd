@@ -62,7 +62,7 @@ func on_entered(body:Node2D):
 		print("I SEE YOU: "+ str(body))
 		body.pushed(dir.normalized(), current_push)
 	if body.is_in_group("PushableRigid"):
-		print("HELP ME!!!!!!!!!!!!!!")
+		#print("HELP ME!!!!!!!!!!!!!!")
 		body.pushed(dir.normalized(), current_push)
 		#apply_impulse((strength * direction, origin of impulse)
 		pass
@@ -83,10 +83,12 @@ func receive_bomb_type(bomb_type:int) -> void:
 		bomb_particles.process_material = load(path +"AirBombMaterial.tres")
 	print(str(bomb_particles.process_material))
 	bomb_particles.emitting = true
-	print("type material correctly loaded (explosion_base)")
+	#print("type material correctly loaded (explosion_base)")
 
-func damage(body:Node2D) -> void:
-	if body.has_method("damaged"):
+func damage(area:Node2D) -> void:
+	print("damage area sees: "+ str(area))
+	if area.owner.has_method("damaged"): #|| area is Enemy || area is Destroyable:
+		print("damaging player")
 		var damage_array:Array[int] = [1, 0, 0, 0, 0]
 		if type ==1:
 			damage_array== [1, 1, 0, 0, 0]
@@ -96,4 +98,4 @@ func damage(body:Node2D) -> void:
 			damage_array== [1, 0, 0, 1, 0]
 		elif type ==4:
 			damage_array== [1, 0, 0, 0, 1]
-		body.damaged(damage_array)
+		area.damaged(damage_array)

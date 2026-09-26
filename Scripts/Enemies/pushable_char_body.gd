@@ -16,9 +16,9 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func pushed(dir:Vector2, strength:float):
-	print("HI, CHARACTER BODY PUSHED")
+	#print("HI, CHARACTER BODY PUSHED")
 	velocity += (dir * strength)
-	print("VELOCITY CHANGED: "+ str(velocity))
+	#print("VELOCITY CHANGED: "+ str(velocity))
 
 func apply_impulse_to_collisions(body:Node2D):
 	if (velocity.y+velocity.x) > 200 && body.is_in_group("PushableRigid"):

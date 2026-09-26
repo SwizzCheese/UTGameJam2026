@@ -2,10 +2,14 @@
 
 [ext_resource type="Texture2D" uid="uid://nyroyh80wbw6" path="res://Assets/icon.svg" id="1_6bqba"]
 [ext_resource type="Script" uid="uid://dcf0jd51a8neu" path="res://Scripts/wiizard.gd" id="1_f8i40"]
+[ext_resource type="Script" uid="uid://bw4k58wv60dua" path="res://Scripts/wiizard_hitbox.gd" id="3_1euf4"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g4v7s"]
 radius = 8.0
 height = 32.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ttdc2"]
+size = Vector2(18, 33)
 
 [node name="Wiizard" type="CharacterBody2D" unique_id=789476140]
 script = ExtResource("1_f8i40")
@@ -21,3 +25,16 @@ shape = SubResource("CapsuleShape2D_g4v7s")
 
 [node name="BombCreationPoint" type="Marker2D" parent="." unique_id=1764285813]
 position = Vector2(16, 0)
+
+[node name="hitbox" type="Area2D" parent="." unique_id=1446174543]
+collision_layer = 2
+collision_mask = 7
+script = ExtResource("3_1euf4")
+
+[node name="hitbox_collision" type="CollisionShape2D" parent="hitbox" unique_id=1439515244]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_ttdc2")
+
+[node name="invincible_timer" type="Timer" parent="." unique_id=2065218456]
+wait_time = 0.5
+one_shot = true
