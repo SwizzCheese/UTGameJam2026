@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://ctha3hokhls8e"]
+
+[ext_resource type="Script" uid="uid://ue7g6mokgnpr" path="res://Scripts/bomb.gd" id="1_kdyat"]
+[ext_resource type="Texture2D" uid="uid://nyroyh80wbw6" path="res://Assets/icon.svg" id="1_yx723"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g4v7s"]
+
+[node name="Bomb" type="RigidBody2D" unique_id=1290725025]
+script = ExtResource("1_kdyat")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=724278104]
+shape = SubResource("CircleShape2D_g4v7s")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=486329862]
+modulate = Color(1, 0, 0, 1)
+scale = Vector2(0.12499999, 0.12499999)
+texture = ExtResource("1_yx723")
+
+[node name="explode_timer" type="Timer" parent="." unique_id=3098855]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1908040694]

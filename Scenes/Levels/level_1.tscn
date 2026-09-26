@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://c544myatnf6i6"]
+
+[ext_resource type="Script" uid="uid://c7fp7cwrjocxa" path="res://Scripts/test_level.gd" id="1_eglq2"]
+[ext_resource type="Texture2D" uid="uid://nyroyh80wbw6" path="res://Assets/icon.svg" id="1_iti4p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
+size = Vector2(128, 128)
+
+[node name="TestLevel" type="Node2D" unique_id=962404041]
+script = ExtResource("1_eglq2")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1815871801]
+position = Vector2(8, 176)
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D" unique_id=1430922940]
+texture = ExtResource("1_iti4p")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=512430377]
+shape = SubResource("RectangleShape2D_g4v7s")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=482340301]
+
+[node name="PlayerSpawn" type="Marker2D" parent="." unique_id=932999925]
