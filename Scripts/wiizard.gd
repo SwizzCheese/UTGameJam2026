@@ -1,5 +1,5 @@
 class_name Player
-extends CharacterBody2D
+extends PushableCharBody
 
 var health : int
 var max_health : int
@@ -105,3 +105,7 @@ func throw_bomb():
 	get_tree().get_first_node_in_group("EntityRoot").add_entity(bomb_instance)
 	bomb_instance.global_transform = $BombCreationPoint.global_transform
 	
+func pushed(dir:Vector2, strength:float):
+	print("HI, Wiizard PUSHED")
+	velocity += (dir * strength*10)
+	print("Wiizard VELOCITY CHANGED: "+ str(velocity))
