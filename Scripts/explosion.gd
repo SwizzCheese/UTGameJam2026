@@ -1,7 +1,7 @@
 class_name ExplosionBase extends Node2D
 
-@export var time:float  = .5#time it takes for explosion to reach max/min values
-
+@export var time:float  = 1 #time it takes for explosion to reach max/min values
+var type: int
 
 @export var max_radius:float #maximum radius of blast
 var current_radius:float = 0
@@ -18,6 +18,9 @@ var current_push:float
 
 @onready var Explosion_Collision: CollisionShape2D = $ExplosionArea/Explosion_Collision
 @onready var timer: Timer = $Timer
+@onready var bomb_particles: GPUParticles2D = $BombParticles
+
+
 
 #TWEENS
 var radius_tween:Tween
@@ -30,6 +33,7 @@ func _ready() -> void:
 	current_power = max_power
 	current_push = max_push
 	$ExplosionArea.body_entered.connect(on_entered)
+	$ExplosionArea.area_entered.connect(damage)
 	
 	#timer
 	timer.wait_time = time
@@ -64,3 +68,31 @@ func on_entered(body:Node2D):
 
 func timer_timout() -> void:
 	queue_free()
+
+#receives the bomb type and assigns correct material to BombParticles
+func receive_bomb_type(bomb_type:int) -> void:
+	var path:String = "res://Materials/BombMaterials/"
+	if bomb_type == 1:
+		bomb_particles.process_material = load(path +"FireBombMaterial.tres")
+	elif bomb_type ==2:
+		bomb_particles.process_material = load(path +"WaterBombMaterial.tres")
+	elif bomb_type ==3:
+		bomb_particles.process_material = load(path +"PlantBombMaterial.tres")
+	elif bomb_type ==4:
+		bomb_particles.process_material = load(path +"AirBombMaterial.tres")
+	print(str(bomb_particles.process_material))
+	bomb_particles.emitting = true
+	print("type material correctly loaded (explosion_base)")
+
+func damage(body:Node2D) -> void:
+	if body.has_method("damaged"):
+		var damage_array:Array[int] = [1, 0, 0, 0, 0]
+		if type ==1:
+			damage_array== [1, 1, 0, 0, 0]
+		elif type ==2:
+			damage_array== [1, 0, 1, 0, 0]
+		elif type ==3:
+			damage_array== [1, 0, 0, 1, 0]
+		elif type ==4:
+			damage_array== [1, 0, 0, 0, 1]
+		body.damaged(damage_array)

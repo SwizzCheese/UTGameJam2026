@@ -14,4 +14,5 @@ func bomb_exploded(type: int, global_pos:Vector2):
 	var explosion_instance = explosion_load.instantiate()
 	explosion_instance.global_position = global_pos
 	effect_root.add_effect(explosion_instance)
+	explosion_instance.receive_bomb_type(type)
 	print("HI, bomb exploded (entity root)")
