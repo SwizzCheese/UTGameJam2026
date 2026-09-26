@@ -11,8 +11,14 @@ config_version=5
 [application]
 
 config/name="UTGameJam2026"
+run/main_scene="uid://b38vv7u4xfeuv"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://Assets/icon.svg"
+
+[display]
+
+window/size/viewport_width=576
+window/size/viewport_height=324
 
 [input]
 
