@@ -20,6 +20,8 @@ var current_spell : int
 var current_bomb:int
 var chucking : bool
 var hurting : bool
+var coyote_time_active : bool
+var coyote_cooldown : bool
 
 var spell_list : Array
 
@@ -30,6 +32,7 @@ var unlocked_spell_list : Array
 @onready var hitbox: Area2D = $hitbox
 @onready var invincible_timer: Timer = $invincible_timer
 @onready var chuck_animation_timer : Timer = $ChuckAnimationTimer
+@onready var coyote_timer : Timer = $CoyoteTimer
 
 func _ready() -> void:
 	if BOMB == null:
@@ -42,9 +45,13 @@ func _ready() -> void:
 	in_cutscene = false
 	chucking = false
 	hurting = false
+	coyote_time_active = false
+	coyote_cooldown = false
 	
 	invincible_timer.timeout.connect(invincible_timer_timeout)
 	chuck_animation_timer.timeout.connect(chuck_animation_timer_timeout)
+	coyote_timer.timeout.connect(coyote_timer_timeout)
+	
 	#Check global for unlocked spell list!!
 
 
@@ -53,9 +60,16 @@ func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
+		if !coyote_time_active and !coyote_cooldown:
+			coyote_timer.start()
+			coyote_time_active = true
+	if is_on_floor():
+		coyote_timer.stop()
+		coyote_time_active = false
+		coyote_cooldown = false
 	
 	# Handle jump.
-	if Input.is_action_just_pressed("up") and is_on_floor() and !in_cutscene:
+	if Input.is_action_just_pressed("up") and (is_on_floor() or coyote_time_active) and !in_cutscene:
 		velocity.y = jump_velocity
 		audio_stream_player_2d.play()
 		
@@ -171,3 +185,7 @@ func invincible_timer_timeout():
 
 func chuck_animation_timer_timeout():
 	chucking = false
+
+func coyote_timer_timeout():
+	coyote_time_active = false
+	coyote_cooldown = true

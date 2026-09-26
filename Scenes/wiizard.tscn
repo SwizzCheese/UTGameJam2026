@@ -7,7 +7,7 @@
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g4v7s"]
 radius = 7.0
-height = 32.0
+height = 31.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ttdc2"]
 size = Vector2(18, 33)
@@ -179,7 +179,6 @@ position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_ttdc2")
 
 [node name="invincible_timer" type="Timer" parent="." unique_id=2065218456]
-wait_time = 0.5
 one_shot = true
 
 [node name="ChuckAnimationTimer" type="Timer" parent="." unique_id=2037324662]
@@ -194,3 +193,6 @@ hframes = 14
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=142922179]
 libraries/ = SubResource("AnimationLibrary_kelyl")
+
+[node name="CoyoteTimer" type="Timer" parent="." unique_id=1815615000]
+wait_time = 0.1
