@@ -20,8 +20,8 @@ var max_easy_level : int = 2
 var max_medium_level : int = 4
 var max_hard_level : int = 6
 
-
-
+var current_spell = 0 #0 for fire, 1 for water, 2 for earth, 3 for air
+var max_spell = 3
 
 
 # Game World root nodes
@@ -39,7 +39,7 @@ var max_hard_level : int = 6
 
 func _ready() -> void:
 	_init_player()
-	
+	#Global.player.change_spell(1)
 	load_level(get_random_level(1))
 
 
@@ -62,8 +62,11 @@ func _init_player() -> void:
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause"):
 		pause_root.show_pause_screen()
-	pass
+	if event.is_action_pressed("change_spell"):
+		change_spell()
+	
 
+#region level loading
 
 func load_level(level_num : int) -> void:
 	# Must be called during "Idle Time" so that the loading doesn't get messed up
@@ -119,7 +122,6 @@ func get_random_level(difficulty : int) -> int:
 
 
 
-
 ## Finds the default spawn location in currently loaded level, and places the player there
 func _place_player_at_level_spawn() -> void:
 	if player == null:
@@ -145,3 +147,14 @@ func _setup_level_camera() -> void:
 	# TODO add a fallback camera
 	# Eventually separate this into the camera system as camera_system.set_target(player)
 	#level_camera.target = player
+
+#endregion
+
+
+func change_spell()-> void: 
+	if current_spell + 1 >max_spell:
+		current_spell =0
+	else:
+		current_spell +=1
+	print("Current spell is: "+ str(current_spell))
+	Global.player.change_spell(current_spell)

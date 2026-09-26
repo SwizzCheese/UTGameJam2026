@@ -73,13 +73,13 @@ func timer_timout() -> void:
 #receives the bomb type and assigns correct material to BombParticles
 func receive_bomb_type(bomb_type:int) -> void:
 	var path:String = "res://Materials/BombMaterials/"
-	if bomb_type == 1:
+	if bomb_type == 0:
 		bomb_particles.process_material = load(path +"FireBombMaterial.tres")
-	elif bomb_type ==2:
+	elif bomb_type ==1:
 		bomb_particles.process_material = load(path +"WaterBombMaterial.tres")
-	elif bomb_type ==3:
+	elif bomb_type ==2:
 		bomb_particles.process_material = load(path +"PlantBombMaterial.tres")
-	elif bomb_type ==4:
+	elif bomb_type ==3:
 		bomb_particles.process_material = load(path +"AirBombMaterial.tres")
 	print(str(bomb_particles.process_material))
 	bomb_particles.emitting = true

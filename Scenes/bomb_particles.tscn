@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ttha2jxbh3it"]
 
-[ext_resource type="Material" uid="uid://c1apj0gncvat4" path="res://Materials/BombMaterials/AirBombMaterial.tres" id="1_gljj0"]
+[ext_resource type="Material" uid="uid://cchiuiaol6uc8" path="res://Materials/BombMaterials/PlantBombMaterial.tres" id="1_gljj0"]
 
 [node name="BombParticles" type="GPUParticles2D" unique_id=685245192]
 emitting = false
