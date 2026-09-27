@@ -44,5 +44,3 @@ offset_top = 101.0
 offset_right = 346.0
 offset_bottom = 124.0
 text = "\"I cast Pause Time\""
-
-[connection signal="mouse_entered" from="ColorRect/Button" to="." method="_on_button_mouse_entered"]

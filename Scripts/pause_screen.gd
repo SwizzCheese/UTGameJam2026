@@ -18,7 +18,3 @@ func open_pause_screen() -> void:
 func close_pause_screen() -> void:
 	hide()
 	get_tree().paused = false
-
-
-func _on_button_mouse_entered() -> void:
-	print("MOUSE SEES THE BUTTON!!!!!")
