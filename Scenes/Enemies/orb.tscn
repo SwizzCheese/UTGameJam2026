@@ -1,16 +1,8 @@
-<<<<<<< Updated upstream
 [gd_scene format=3 uid="uid://dp000sln6nyeq"]
 
 [ext_resource type="Script" uid="uid://c0ce81b0eymy4" path="res://Scenes/Enemies/orb.gd" id="1_moloc"]
 [ext_resource type="Material" uid="uid://c76nxn8v74pqd" path="res://Materials/OrbMaterial.tres" id="2_7403d"]
 [ext_resource type="Texture2D" uid="uid://bha5okpjfyj4d" path="res://Assets/MonsterSpritesheets/OrbSprite.png" id="2_hkbbr"]
-=======
-[gd_scene format=3 uid="uid://bxeylgwq5mby5"]
-
-[ext_resource type="Script" path="res://Scenes/Enemies/orb.gd" id="1_moloc"]
-[ext_resource type="Material" path="res://Materials/OrbMaterial.tres" id="2_7403d"]
-[ext_resource type="Texture2D" path="res://Assets/MonsterSpritesheets/OrbSprite.png" id="2_hkbbr"]
->>>>>>> Stashed changes
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_moloc"]
 radius = 6.0827627
