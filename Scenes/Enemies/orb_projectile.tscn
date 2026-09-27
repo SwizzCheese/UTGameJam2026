@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://ccc77hq0o1oj5"]
+
+[ext_resource type="Script" uid="uid://bm7jvlh352166" path="res://Scripts/Enemies/orb_projectile.gd" id="1_ycoig"]
+[ext_resource type="Material" uid="uid://dwcsv4hlfsu6v" path="res://Materials/OrbProjectileMaterial.tres" id="2_ycoig"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_crnk2"]
+radius = 5.0
+
+[node name="OrbProjectile" type="Area2D" unique_id=791873147]
+script = ExtResource("1_ycoig")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=200983498]
+shape = SubResource("CircleShape2D_crnk2")
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="." unique_id=1226862679]
+amount = 20
+lifetime = 2.0
+process_material = ExtResource("2_ycoig")
+
+[node name="Timer" type="Timer" parent="." unique_id=537208416]
+wait_time = 0.5
+one_shot = true
