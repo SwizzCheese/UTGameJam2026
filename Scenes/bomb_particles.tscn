@@ -5,7 +5,9 @@
 [node name="BombParticles" type="GPUParticles2D" unique_id=685245192]
 emitting = false
 amount = 150
+lifetime = 0.5
 one_shot = true
+speed_scale = 2.0
 explosiveness = 0.27
 trail_lifetime = 0.13
 process_material = ExtResource("1_gljj0")

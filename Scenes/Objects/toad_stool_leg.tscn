@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://cumlu36yhxuav"]
+
+[ext_resource type="PackedScene" uid="uid://bmqckhlvomhmg" path="res://Scenes/Objects/furniture_piece.tscn" id="1_st671"]
+[ext_resource type="Texture2D" uid="uid://dbw8gsmujvnvt" path="res://Assets/Objects/Toadstool.png" id="2_uqipg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_st671"]
+size = Vector2(2, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lpf0u"]
+size = Vector2(3, 5)
+
+[node name="ToadStoolLeg" unique_id=1153083776 instance=ExtResource("1_st671")]
+
+[node name="Sprite2D" parent="." index="0" unique_id=1389681921]
+texture = ExtResource("2_uqipg")
+region_enabled = true
+region_rect = Rect2(8, 24, 8, 8)
+
+[node name="CollisionShape2D" parent="." index="1" unique_id=2090115192]
+position = Vector2(-1, 2)
+shape = SubResource("RectangleShape2D_st671")
+
+[node name="CollisionShape2D" parent="Area2D" parent_id_path=PackedInt32Array(1388120205) index="0" unique_id=1028781862]
+position = Vector2(-0.5, 1.5)
+shape = SubResource("RectangleShape2D_lpf0u")

@@ -1,6 +1,8 @@
 class_name Player
 extends PushableCharBody
 
+var in_cutscene : bool
+
 var max_health : int = 3
 var health : int = max_health
 
@@ -16,15 +18,21 @@ const BOMB : PackedScene = preload("uid://ctha3hokhls8e")
 
 var current_spell : int
 var current_bomb:int
+var chucking : bool
+var hurting : bool
+var coyote_time_active : bool
+var coyote_cooldown : bool
 
 var spell_list : Array
 
 var unlocked_spell_list : Array
 
 @onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
-
+@onready var animation : AnimationPlayer = $AnimationPlayer
 @onready var hitbox: Area2D = $hitbox
 @onready var invincible_timer: Timer = $invincible_timer
+@onready var chuck_animation_timer : Timer = $ChuckAnimationTimer
+@onready var coyote_timer : Timer = $CoyoteTimer
 
 func _ready() -> void:
 	if BOMB == null:
@@ -34,7 +42,15 @@ func _ready() -> void:
 	slipperiness = 20
 	gravity = 20
 	
+	in_cutscene = false
+	chucking = false
+	hurting = false
+	coyote_time_active = false
+	coyote_cooldown = false
+	
 	invincible_timer.timeout.connect(invincible_timer_timeout)
+	chuck_animation_timer.timeout.connect(chuck_animation_timer_timeout)
+	coyote_timer.timeout.connect(coyote_timer_timeout)
 	
 	#Check global for unlocked spell list!!
 
@@ -44,17 +60,24 @@ func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
+		if !coyote_time_active and !coyote_cooldown:
+			coyote_timer.start()
+			coyote_time_active = true
+	if is_on_floor():
+		coyote_timer.stop()
+		coyote_time_active = false
+		coyote_cooldown = false
 	
 	# Handle jump.
-	if Input.is_action_just_pressed("up") and is_on_floor():
+	if Input.is_action_just_pressed("up") and (is_on_floor() or coyote_time_active) and !in_cutscene:
 		velocity.y = jump_velocity
 		audio_stream_player_2d.play()
 		
 	
-	if Input.is_action_just_pressed("throw_bomb"):
+	if Input.is_action_just_pressed("throw_bomb") and !in_cutscene:
 		throw_bomb()
 	
-	if Input.is_action_just_pressed("spell"):
+	if Input.is_action_just_pressed("spell") and !in_cutscene:
 		cast_spell()
 	
 	#if Input.is_action_just_pressed("change_spell"):
@@ -64,19 +87,36 @@ func _physics_process(delta: float) -> void:
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction := Input.get_axis("left", "right")
-	if direction:
+	if direction and !in_cutscene:
 		velocity.x = move_toward(velocity.x, direction * speed, slipperiness)
 	else:
 		velocity.x = move_toward(velocity.x, 0, slipperiness)
-	if Input.is_action_just_pressed("left"):
+	
+	if Input.is_action_pressed("left"):
+		$Sprite2D.flip_h  = true
 		last_direction = -1
-		$BombCreationPoint.position = Vector2(-16.0,0)
-	if Input.is_action_just_pressed("right"):
+	if Input.is_action_pressed("right"):
+		$Sprite2D.flip_h  = false
 		last_direction = 1
-		$BombCreationPoint.position = Vector2(16.0,0)
+	
+	
+	if hurting:
+		animation.play("hurt")
+	elif !is_on_floor() and !chucking:
+		animation.play("jump")
+	elif !is_on_floor() and chucking:
+		animation.play("jump_shoot")
+	elif direction and !chucking:
+		animation.play("run")
+	elif direction and chucking:
+		animation.play("run_shoot")
+	elif !direction and chucking:
+		animation.play("idle_shoot")
+	else:
+		animation.play("idle")
+	
 	
 	move_and_slide()
-	
 
 
 
@@ -106,8 +146,18 @@ func change_spell(new_bomb:int):
 
 func throw_bomb():
 	#Instantiate a bomb object at BombCreationPoint with velocity away and up from player's global position
+	var bomb_direction : Vector2 = Vector2(Input.get_axis("left", "right"), 1)
+	if Input.is_action_pressed("down"):
+		last_direction = 0
+		bomb_direction.y = 0
+	$BombCreationPoint.position.x = last_direction * 10.0
+	$BombCreationPoint.position.y = bomb_direction.y * 10
+	
+	
+	chucking = true
+	chuck_animation_timer.start()
 	var bomb_instance = BOMB.instantiate()
-	bomb_instance.direction = last_direction
+	bomb_instance.direction = Vector2(last_direction, bomb_direction.y)
 	print("players current spell is: "+ str(current_bomb))
 	bomb_instance.give_type(current_bomb)
 	#get_tree().get_first_node_in_group("EntityRoot").add_child(bomb_instance)
@@ -120,7 +170,7 @@ func pushed(dir:Vector2, strength:float):
 	#print("Wiizard VELOCITY CHANGED: "+ str(velocity))
 
 func damaged(damage_array:Array[int]):
-	#print("Player hit!!!!!!!!!!!!!!!!!!!!!!!!!11")
+	hurting = true
 	health = health - damage_array[0]
 	if health <= 0:
 		destroyed()
@@ -137,4 +187,12 @@ func destroyed():
 	queue_free()
 
 func invincible_timer_timeout():
+	hurting = false
 	$hitbox/hitbox_collision.set_deferred("disabled", false)
+
+func chuck_animation_timer_timeout():
+	chucking = false
+
+func coyote_timer_timeout():
+	coyote_time_active = false
+	coyote_cooldown = true

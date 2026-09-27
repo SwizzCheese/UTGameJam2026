@@ -3,7 +3,7 @@ class_name BaseLevel
 extends Node2D
 ## Abstract class for levels
 
-var pillars : int
+@export var pillars : int
 var countdown_time : float
 var i_won : bool
 
