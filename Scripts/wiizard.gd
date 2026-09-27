@@ -165,8 +165,8 @@ func throw_bomb():
 	bomb_instance.direction = Vector2(last_direction, bomb_direction.y)
 	print("players current spell is: "+ str(current_bomb))
 	bomb_instance.give_type(current_bomb)
-	#get_tree().get_first_node_in_group("EntityRoot").add_child(bomb_instance)
-	get_tree().get_first_node_in_group("EntityRoot").add_entity(bomb_instance)
+	get_tree().get_first_node_in_group("EntityRoot").add_child(bomb_instance)
+	#get_tree().get_first_node_in_group("EntityRoot").add_entity(bomb_instance)
 	bomb_instance.global_transform = $BombCreationPoint.global_transform
 	
 func pushed(dir:Vector2, strength:float):
