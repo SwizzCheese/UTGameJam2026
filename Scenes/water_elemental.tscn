@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://coaql1qo8gh8v"]
 
 [ext_resource type="PackedScene" uid="uid://bosjxkdkr7oak" path="res://Scenes/water_droplets.tscn" id="1_5pgmd"]
-[ext_resource type="Script" uid="uid://cd6k2hewunrdu" path="res://Scenes/water_elemental.gd" id="1_8xy3n"]
+[ext_resource type="Script" uid="uid://cd6k2hewunrdu" path="res://Scripts/Enemies/Water Elemental/water_elemental.gd" id="1_8xy3n"]
 [ext_resource type="Texture2D" uid="uid://djln63nfa87tv" path="res://Assets/HighResWaterElemental.png" id="1_jy3dd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_44esh"]
@@ -81,7 +81,7 @@ radius = 4.0
 height = 16.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_126ht"]
-size = Vector2(18, 23.75)
+size = Vector2(15, 21.319445)
 
 [node name="WaterElemental" type="CharacterBody2D" unique_id=308782645 groups=["enemy"]]
 script = ExtResource("1_8xy3n")
@@ -89,6 +89,7 @@ script = ExtResource("1_8xy3n")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1635740889]
 sprite_frames = SubResource("SpriteFrames_jy3dd")
 animation = &"Move"
+flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1765074140]
 rotation = 1.5707964
@@ -96,18 +97,20 @@ shape = SubResource("CapsuleShape2D_d2rsb")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1959846872]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=328941002]
-position = Vector2(0.5, 0.50000006)
+[node name="PlayerCollision" type="CollisionShape2D" parent="Area2D" unique_id=328941002]
+position = Vector2(-0.5937499, 0.5)
 rotation = 1.5707964
-scale = Vector2(0.5, 0.8)
+scale = Vector2(0.6, 0.9)
 shape = SubResource("RectangleShape2D_126ht")
 
 [node name="CPUParticles2D" parent="." unique_id=610266993 instance=ExtResource("1_5pgmd")]
 
 [node name="RayCast2D" type="RayCast2D" parent="." unique_id=1474774337]
-target_position = Vector2(-11, 0)
+target_position = Vector2(12, 0)
 collide_with_areas = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1379859631]
 
 [node name="Timer" type="Timer" parent="." unique_id=1216115221]
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=803103343]

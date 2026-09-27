@@ -4,7 +4,7 @@ extends BaseEnemy
 @onready var push_timer = $PushTimer
 
 func _ready() -> void:
-	speed = 450.0
+	speed = 100.0
 	direction = 1.0
 	health = 1
 	acceleration = 0.1

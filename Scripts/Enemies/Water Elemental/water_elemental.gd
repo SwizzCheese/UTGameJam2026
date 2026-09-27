@@ -7,7 +7,7 @@ extends BaseEnemy
 @onready var water_particles = $CPUParticles2D
 
 func _ready() -> void:
-	speed = 450.0
+	speed = 100.0
 	direction = 1.0
 	health = 1
 	acceleration = 0.1
@@ -17,21 +17,22 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	#checks if elemental is facing left or right
-	
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 	if not being_pushed:
 		velocity.x = lerp(velocity.x, direction * speed, acceleration)
 	
+	
 	if wall_detector.is_colliding():
 		change_direction()
-		direction *= -1
-		water_elemental.flip_h = direction < 0
+		if(direction > 0):
+			water_elemental.flip_h = true
+		else:
+			water_elemental.flip_h = false
+		
 		wall_detector.target_position.x = wall_detector.target_position.x * -1
 	
 	if health <= 0:
-		water_elemental.play("Dead")
-		_release_babies()
 		destroyed()
 	
 	water_elemental.play("Move")
@@ -41,13 +42,13 @@ func _release_babies() -> void:
 	pass
 
 func _spawn_puddle() -> void:
-	water_elemental.play("Peeking")
-	water_particles.show()
-	await get_tree().create_timer(3.0).timeout
-	_spawn_babies()
+	pass
+	#water_elemental.play("Peeking")
+	#water_particles.show()
+	#await get_tree().create_timer(3.0).timeout
+	#_spawn_babies()
 
 func _spawn_babies() -> void:
-	
 	pass
 
 func _on_hitbox_area_entered(area: Area2D) -> void:

@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://cuua4hlpg1wvi"]
+
+[ext_resource type="Script" uid="uid://c4vu8j01qvdbu" path="res://Scripts/Enemies/Water Elemental/RigidBody2D.gd" id="1_j1ak5"]
+
+[node name="RigidBody2D" type="RigidBody2D" unique_id=1103987654]
+script = ExtResource("1_j1ak5")
