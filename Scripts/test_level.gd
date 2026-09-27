@@ -10,6 +10,7 @@ signal confirm
 func _ready() -> void:
 	countdown_timer.timeout.connect(countdown_failed)
 	i_won = false
+	Global.give_HUD_time.emit(countdown_timer.wait_time)
 	
 
 func _input(event: InputEvent) -> void:
@@ -42,6 +43,7 @@ func countdown_failed():
 	countdown_timer.stop()
 
 func level_cleared():
+	Global.level_won.emit()
 	i_won = true
 	countdown_timer.stop()
 	Global.player.visible = false

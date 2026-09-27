@@ -1,6 +1,7 @@
 extends Control
 
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	hide()
@@ -11,7 +12,7 @@ func _input(event: InputEvent) -> void:
 		close_death_screen()
 
 func open_death_screen() -> void:
-	get_tree().paused = true
+	print("I am here in death screen")
 	show()
 
 

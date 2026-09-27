@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://b1vbvcqfbfunn"]
+
+[ext_resource type="Script" uid="uid://dgtoinkch5f2m" path="res://Scripts/countdown.gd" id="1_uxvso"]
+
+[node name="Countdown" type="Control" unique_id=1563059031]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_uxvso")
+
+[node name="Timer" type="Timer" parent="." unique_id=753086209]
+wait_time = 30.0
+one_shot = true
+
+[node name="Label" type="Label" parent="." unique_id=1830167442]
+layout_mode = 0
+offset_left = 499.0
+offset_top = 4.0
+offset_right = 539.0
+offset_bottom = 27.0
+horizontal_alignment = 2
