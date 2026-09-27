@@ -3,10 +3,12 @@ extends Node2D
 @onready var effect_root: Node2D = $"../EffectRoot"
 
 func add_entity(entity:Node2D):
+	var pos = entity.global_position
 	if entity is Bomb:
 		entity.exploded.connect(bomb_exploded)
 	if entity is FurniturePiece:
-		print("furniture piece added")
+		entity.call_deferred("reparent",(self))
+		entity.call_deferred("set_global_position",  pos)
 	add_child(entity)
 	print("entity added")
 
