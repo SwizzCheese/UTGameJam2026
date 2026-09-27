@@ -27,7 +27,7 @@ var spell_list : Array
 
 var unlocked_spell_list : Array
 
-var ult_array:Array[int]  = [1, 0, 3, 2, 0]#empty, has test value
+var ult_array:Array[int]#  = [1, 0, 3, 2, 0]#empty, has test value
 var max_ult_power:int = 5 #maximum number of times to power an ult
 
 @onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
@@ -200,6 +200,7 @@ func chuck_animation_timer_timeout():
 func coyote_timer_timeout():
 	coyote_time_active = false
 	coyote_cooldown = true
+#region Ultimate
 
 func release_ultimate() -> void:
 	if ult_array.size() >= 5:
@@ -213,3 +214,4 @@ func release_ultimate() -> void:
 func add_to_ultimate(type:int) -> void:
 	if ult_array.size() < (max_ult_power -1):
 		ult_array.append(type)
+#endregion

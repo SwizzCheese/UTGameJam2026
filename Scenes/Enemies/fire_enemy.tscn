@@ -1,7 +1,0 @@
-[gd_scene format=3 uid="uid://htc1ifx7pa6e"]
-
-[ext_resource type="PackedScene" uid="uid://dd37581vbvknq" path="res://Scenes/Enemies/pushable_charbody.tscn" id="1_yk0pu"]
-[ext_resource type="Script" uid="uid://d0wvpj0xlmrto" path="res://Scripts/Enemies/fire_enemy.gd" id="2_xhxes"]
-
-[node name="FireEnemy" unique_id=73494080 instance=ExtResource("1_yk0pu")]
-script = ExtResource("2_xhxes")

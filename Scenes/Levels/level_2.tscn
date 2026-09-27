@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bq8nxm4acyj8w" path="res://Scenes/Objects/exit.tscn" id="4_w2ac1"]
 [ext_resource type="Texture2D" uid="uid://c00mfem341rd3" path="res://Assets/BombWiizard_TileMap.png" id="5_ovj6s"]
 [ext_resource type="PackedScene" uid="uid://c8gnjd7kuberi" path="res://Scenes/rubble_particle.tscn" id="6_8qsmg"]
+[ext_resource type="PackedScene" uid="uid://bhrox7q6qbk2h" path="res://Scenes/Enemies/fire_monster.tscn" id="7_fphuk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8qsmg"]
 texture = ExtResource("5_ovj6s")
@@ -125,3 +126,9 @@ emitting = false
 position = Vector2(-144, 80)
 rotation = -3.1415927
 emitting = false
+
+[node name="FireMonster" parent="." unique_id=161115135 instance=ExtResource("7_fphuk")]
+position = Vector2(119, 100)
+
+[node name="FireMonster2" parent="." unique_id=1174577046 instance=ExtResource("7_fphuk")]
+position = Vector2(111, 3)
