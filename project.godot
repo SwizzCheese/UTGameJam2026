@@ -13,12 +13,13 @@ config_version=5
 config/name="UTGameJam2026"
 run/main_scene="uid://b38vv7u4xfeuv"
 config/features=PackedStringArray("4.7", "GL Compatibility")
-config/icon="res://Assets/icon.svg"
+config/icon="uid://bha5okpjfyj4d"
 "[global_group]PushableBodies"=""
 PushableRigid=""
 
 [autoload]
 
+Music="*uid://dcmxgd7e1jra2"
 Global="*uid://c2i34pduy0yrb"
 
 [display]
