@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://coaql1qo8gh8v"]
 
-[ext_resource type="PackedScene" uid="uid://bosjxkdkr7oak" path="res://Scenes/water_droplets.tscn" id="1_5pgmd"]
+[ext_resource type="PackedScene" uid="uid://bosjxkdkr7oak" path="res://Scenes/Enemies/Water Elemental/water_droplets.tscn" id="1_5pgmd"]
 [ext_resource type="Script" uid="uid://cd6k2hewunrdu" path="res://Scripts/Enemies/Water Elemental/water_elemental.gd" id="1_8xy3n"]
 [ext_resource type="Texture2D" uid="uid://djln63nfa87tv" path="res://Assets/HighResWaterElemental.png" id="1_jy3dd"]
 
@@ -114,7 +114,5 @@ collide_with_areas = true
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1379859631]
 
 [node name="Timer" type="Timer" parent="." unique_id=1216115221]
-
-[node name="Marker2D" type="Marker2D" parent="." unique_id=803103343]
 
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]

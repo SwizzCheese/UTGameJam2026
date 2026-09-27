@@ -4,9 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://bpnxt7kktyuba" path="res://Scenes/Enemies/base_enemy.tscn" id="3_3mqfk"]
 [ext_resource type="PackedScene" uid="uid://dq5m0dl6u1xng" path="res://Scenes/Objects/pillar.tscn" id="4_iixi8"]
 [ext_resource type="PackedScene" uid="uid://bq8nxm4acyj8w" path="res://Scenes/Objects/exit.tscn" id="5_cyadu"]
-[ext_resource type="PackedScene" uid="uid://coaql1qo8gh8v" path="res://Scenes/water_elemental.tscn" id="6_5f3p6"]
+[ext_resource type="PackedScene" uid="uid://coaql1qo8gh8v" path="res://Scenes/Enemies/Water Elemental/water_elemental.tscn" id="6_5f3p6"]
 [ext_resource type="Texture2D" uid="uid://c00mfem341rd3" path="res://Assets/BombWiizard_TileMap.png" id="6_xgxfi"]
-[ext_resource type="Texture2D" uid="uid://bggy3pngfkopx" path="res://Assets/Numbers0-9.png" id="7_5f3p6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xgxfi"]
 texture = ExtResource("6_xgxfi")

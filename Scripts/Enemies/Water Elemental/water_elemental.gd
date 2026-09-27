@@ -38,9 +38,6 @@ func _physics_process(delta: float) -> void:
 	water_elemental.play("Move")
 	move_and_slide()
 
-func _release_babies() -> void:
-	pass
-
 func _spawn_puddle() -> void:
 	pass
 	#water_elemental.play("Peeking")

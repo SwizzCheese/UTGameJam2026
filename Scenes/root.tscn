@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c7wyvx70h35nu" path="res://Scripts/root.gd" id="1_i04dx"]
 [ext_resource type="Script" uid="uid://et6nuewvesj1" path="res://Scripts/entity_root.gd" id="2_8pvmw"]
-[ext_resource type="PackedScene" uid="uid://coaql1qo8gh8v" path="res://Scenes/water_elemental.tscn" id="3_a6f85"]
+[ext_resource type="PackedScene" uid="uid://coaql1qo8gh8v" path="res://Scenes/Enemies/Water Elemental/water_elemental.tscn" id="3_a6f85"]
 [ext_resource type="Script" uid="uid://bu4jtrlaawd13" path="res://Scripts/effect_root.gd" id="3_vnucn"]
 [ext_resource type="Script" uid="uid://bkg50g1x3s4d7" path="res://Scripts/hud_root.gd" id="4_c3mwy"]
 [ext_resource type="PackedScene" uid="uid://26grbe26lnus" path="res://Scenes/Health.tscn" id="5_4g5cr"]
