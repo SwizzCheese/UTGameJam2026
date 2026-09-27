@@ -1,14 +1,9 @@
-<<<<<<< Updated upstream
+
 [gd_scene format=3 uid="uid://ccc77hq0o1oj5"]
 
 [ext_resource type="Script" uid="uid://bm7jvlh352166" path="res://Scripts/Enemies/orb_projectile.gd" id="1_ycoig"]
 [ext_resource type="Material" uid="uid://dwcsv4hlfsu6v" path="res://Materials/OrbProjectileMaterial.tres" id="2_ycoig"]
-=======
-[gd_scene format=3 uid="uid://bue4hny22gktg"]
 
-[ext_resource type="Script" path="res://Scripts/Enemies/orb_projectile.gd" id="1_ycoig"]
-[ext_resource type="Material" path="res://Materials/OrbProjectileMaterial.tres" id="2_ycoig"]
->>>>>>> Stashed changes
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_crnk2"]
 radius = 5.0
