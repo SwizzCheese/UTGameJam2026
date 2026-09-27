@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://c8gnjd7kuberi"]
+
+[sub_resource type="Gradient" id="Gradient_w5ynp"]
+offsets = PackedFloat32Array(0.03504043, 0.49595687)
+colors = PackedColorArray(0.50534403, 0.5053441, 0.50534403, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_yf5fn"]
+gradient = SubResource("Gradient_w5ynp")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_g4v7s"]
+lifetime_randomness = 0.1
+particle_flag_rotate_y = true
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(10, 10, 1)
+emission_shape = 1
+emission_sphere_radius = 1.0
+angle_min = -720.0
+angle_max = 720.0
+direction = Vector3(0, 0, 0)
+spread = 75.0
+initial_velocity_min = 780.45996
+initial_velocity_max = 780.45996
+gravity = Vector3(0, 98, 0)
+scale_max = 5.0
+color_ramp = SubResource("GradientTexture1D_yf5fn")
+
+[node name="RubbleParticle" type="GPUParticles2D" unique_id=1986287931]
+amount = 50
+process_material = SubResource("ParticleProcessMaterial_g4v7s")
