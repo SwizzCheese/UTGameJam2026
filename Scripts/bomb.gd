@@ -2,7 +2,7 @@ class_name Bomb
 extends RigidBody2D
 
 #either 1 or -1 to control direction of bomb's initial fling
-@export var direction : int = 1
+@export var direction : Vector2 = Vector2(1,0)
 @export var time:float = 3
 
 var type:int = 1 #1 for fire, 2 for water, 3 - earth, 4 - air
@@ -19,8 +19,8 @@ func _ready() -> void:
 	explode_timer.timeout.connect(explode)
 	#thrown.emit
 	var velocity : Vector2
-	velocity.x = initial_velocity.x * direction
-	velocity.y = initial_velocity.y
+	velocity.x = initial_velocity.x * direction.x
+	velocity.y = initial_velocity.y * direction.y
 	apply_central_impulse(velocity)
 	
 	explode_timer.start()

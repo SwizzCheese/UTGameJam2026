@@ -82,7 +82,7 @@ pillars = 4
 position = Vector2(136, -80)
 
 [node name="BaseEnemy" parent="." unique_id=1148401797 instance=ExtResource("2_ucdhh")]
-position = Vector2(-72, 96)
+position = Vector2(16, -32)
 
 [node name="Pillar" parent="." unique_id=200004278 instance=ExtResource("3_oylv5")]
 position = Vector2(136, 96)

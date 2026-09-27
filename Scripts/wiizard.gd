@@ -91,14 +91,13 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, direction * speed, slipperiness)
 	else:
 		velocity.x = move_toward(velocity.x, 0, slipperiness)
-	if Input.is_action_just_pressed("left"):
-		last_direction = -1
+	
+	if Input.is_action_pressed("left"):
 		$Sprite2D.flip_h  = true
-		$BombCreationPoint.position = Vector2(-16.0,0)
-	if Input.is_action_just_pressed("right"):
-		last_direction = 1
+		last_direction = -1
+	if Input.is_action_pressed("right"):
 		$Sprite2D.flip_h  = false
-		$BombCreationPoint.position = Vector2(16.0,0)
+		last_direction = 1
 	
 	
 	if hurting:
@@ -147,10 +146,26 @@ func change_spell(new_bomb:int):
 
 func throw_bomb():
 	#Instantiate a bomb object at BombCreationPoint with velocity away and up from player's global position
+	var bomb_direction : Vector2 = Vector2(Input.get_axis("left", "right"), 1)
+	var up = false
+	if Input.is_action_pressed("up"):
+		bomb_direction.y = 2
+		up = true
+	else:
+		up = false
+	if Input.is_action_pressed("down"):
+		last_direction = 0
+		bomb_direction.y = 0
+	if up:
+		last_direction = 0
+	$BombCreationPoint.position.x = last_direction * 10.0
+	$BombCreationPoint.position.y = bomb_direction.y * 10
+	
+	
 	chucking = true
 	chuck_animation_timer.start()
 	var bomb_instance = BOMB.instantiate()
-	bomb_instance.direction = last_direction
+	bomb_instance.direction = Vector2(last_direction, bomb_direction.y)
 	print("players current spell is: "+ str(current_bomb))
 	bomb_instance.give_type(current_bomb)
 	#get_tree().get_first_node_in_group("EntityRoot").add_child(bomb_instance)
