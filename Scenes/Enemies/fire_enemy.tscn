@@ -1,6 +1,6 @@
-[gd_scene format=3 uid="uid://htc1ifx7pa6e"]
+[gd_scene format=3 uid="uid://dbcgp3fhgc013"]
 
-[ext_resource type="Script" uid="uid://kx5uja8tf0yo" path="res://Scripts/fire_enemy.gd" id="1_xhxes"]
+[ext_resource type="Script" path="res://Scripts/fire_enemy.gd" id="1_xhxes"]
 [ext_resource type="Texture2D" uid="uid://bkclerxd7bpw2" path="res://Assets/BombWiizard_FireSprite.png" id="1_yk0pu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]

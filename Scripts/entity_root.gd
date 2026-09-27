@@ -6,7 +6,7 @@ func add_entity(entity:Node2D):
 	var pos = entity.global_position
 	if entity is Bomb:
 		entity.exploded.connect(bomb_exploded)
-	if entity is FurniturePiece:
+	elif entity is FurniturePiece:
 		entity.call_deferred("reparent",(self))
 		entity.call_deferred("set_global_position",  pos)
 	else:

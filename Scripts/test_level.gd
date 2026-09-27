@@ -7,7 +7,6 @@ extends BaseLevel
 @onready var rubble1 : GPUParticles2D = $RubbleParticle
 @onready var rubble2 : GPUParticles2D = $RubbleParticle2
 @onready var explosion_reference = preload("uid://ttha2jxbh3it")
-@onready var countdown_sprite : Sprite2D = $CountdownSprite
 @export var level_num : int
 var in_countdown : bool
 var in_collapse_cutscene : bool
@@ -19,9 +18,7 @@ func _ready() -> void:
 	i_won = false
 	in_collapse_cutscene = false
 	in_countdown = false
-	Global.give_HUD_time.emit(countdown_timer.wait_time)
-	countdown_sprite.visible = false
-	Global.player.in_cutscene = false
+	
 
 func _input(event: InputEvent) -> void:
 	if event.is_action("throw_bomb"):
@@ -54,23 +51,18 @@ func pillar_destroyed():
 
 func start_countdown():
 	countdown_timer.start()
+	Global.give_HUD_time.emit(countdown_timer.wait_time)
 	exit.open_exit()
 	in_countdown = true
-	countdown_sprite.visible = true
-	while in_countdown:
-		await get_tree().create_timer(1).timeout
-		countdown_sprite.frame += 1
 
 func countdown_failed():
 	if !i_won and Global.player != null:
 		Global.player.destroyed()
-	countdown_sprite.visible = false
 	countdown_timer.stop()
 	in_countdown = false
 
 func level_cleared():
 	Global.level_won.emit()
-	countdown_sprite.visible = false
 	i_won = true
 	countdown_timer.stop()
 	Global.player.visible = false
@@ -104,31 +96,7 @@ func level_cleared():
 	new_explosion_3.global_position.y += randf_range(-150,150)
 	new_explosion_3.emitting = true
 	
-	await get_tree().create_timer(0.2).timeout
-	#generate explosion effect, repeat five times then big explosion
-	var new_explosion_5 = explosion_reference.instantiate()
-	add_child(new_explosion_5)
-	new_explosion_5.global_position.x = randf_range(25, 250)
-	new_explosion_5.global_position.y += randf_range(-150,150)
-	new_explosion_5.emitting = true
-	
-	await get_tree().create_timer(0.2).timeout
-	#generate explosion effect, repeat five times then big explosion
-	var new_explosion_6 = explosion_reference.instantiate()
-	add_child(new_explosion_6)
-	new_explosion_6.global_position.x = randf_range(25, 250)
-	new_explosion_6.global_position.y += randf_range(-150,150)
-	new_explosion_6.emitting = true
-	
-	await get_tree().create_timer(0.2).timeout
-	#generate explosion effect, repeat five times then big explosion
-	var new_explosion_7 = explosion_reference.instantiate()
-	add_child(new_explosion_7)
-	new_explosion_7.global_position.x = randf_range(25, 250)
-	new_explosion_7.global_position.y += randf_range(-150,150)
-	new_explosion_7.emitting = true
-	
-	await get_tree().create_timer(0.2).timeout
+	await get_tree().create_timer(1).timeout
 	#generate explosion effect, repeat five times then big explosion
 	var new_explosion_4 = explosion_reference.instantiate()
 	Global.root.entity_root.add_child(new_explosion_4)
