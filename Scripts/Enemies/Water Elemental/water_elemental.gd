@@ -5,7 +5,9 @@ extends BaseEnemy
 @onready var push_timer = $Timer
 @onready var water_elemental = $AnimatedSprite2D
 @onready var water_particles = $CPUParticles2D
+@onready var is_dead: bool = false
 
+@export var water_split : PackedScene
 func _ready() -> void:
 	speed = 100.0
 	direction = 1.0
@@ -14,6 +16,26 @@ func _ready() -> void:
 	push_timer.timeout.connect(push_timer_timeout)
 	being_pushed = false
 
+func destroyed() -> void:
+	_split_the_water()
+	super.destroyed()
+
+func _split_the_water() -> void:
+	#Altering the range will determine how many children this enemy can spawn
+	#I chose 2, but more is funny. Less is less funny
+	for i in range(2):
+		var child_spawn_point = water_split.instantiate()
+		get_tree().current_scene.add_child(child_spawn_point)
+		child_spawn_point.global_position = global_position
+		print("Elemental spaned at", global_position)
+		#After those explosion struggles, I'm just gonna do random trajectory
+		var marker_direction := -1.0 if randf() < 0.5 else 1.0
+		var marker_speed : float = 400
+		var angle := randf_range(-60.0,-30.0)
+		var marker_velocity := Vector2.from_angle(deg_to_rad(angle)) * marker_speed
+		marker_velocity.x *= marker_direction
+		child_spawn_point.launch(marker_velocity)
+		print("launched at velocity" ,marker_velocity)
 
 func _physics_process(delta: float) -> void:
 	#checks if elemental is facing left or right
@@ -25,6 +47,8 @@ func _physics_process(delta: float) -> void:
 	
 	if wall_detector.is_colliding():
 		change_direction()
+		
+		#This lets the elemental animation flip when it changes direction
 		if(direction > 0):
 			water_elemental.flip_h = true
 		else:
@@ -32,9 +56,14 @@ func _physics_process(delta: float) -> void:
 		
 		wall_detector.target_position.x = wall_detector.target_position.x * -1
 	
-	if health <= 0:
+	#This will cause destroyed() to only be caused once
+	#I need this to let me do an on death trigger
+	#Otherwise it would proc repeatedly
+	if health <= 0 and not is_dead:
+		is_dead = true
 		destroyed()
 	
+	#Plays move animation and causes it to move
 	water_elemental.play("Move")
 	move_and_slide()
 

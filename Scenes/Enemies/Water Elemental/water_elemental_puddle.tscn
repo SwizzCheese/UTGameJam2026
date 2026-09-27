@@ -1,3 +1,90 @@
 [gd_scene format=3 uid="uid://dkuqfihdtprr6"]
 
+[ext_resource type="Script" uid="uid://bbj7iggrqt7k5" path="res://Scripts/Enemies/Water Elemental/water_elemental_puddle.gd" id="1_7ns4s"]
+[ext_resource type="Texture2D" uid="uid://djln63nfa87tv" path="res://Assets/HighResWaterElemental.png" id="2_bicqc"]
+[ext_resource type="PackedScene" uid="uid://coaql1qo8gh8v" path="res://Scenes/Enemies/Water Elemental/water_elemental.tscn" id="2_ddsv4"]
+[ext_resource type="PackedScene" uid="uid://bosjxkdkr7oak" path="res://Scenes/Enemies/Water Elemental/water_droplets.tscn" id="3_ddsv4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_44esh"]
+atlas = ExtResource("2_bicqc")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8gq4n"]
+atlas = ExtResource("2_bicqc")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_78ugp"]
+atlas = ExtResource("2_bicqc")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1xf5c"]
+atlas = ExtResource("2_bicqc")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8xy3n"]
+atlas = ExtResource("2_bicqc")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_curdl"]
+atlas = ExtResource("2_bicqc")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ut84"]
+atlas = ExtResource("2_bicqc")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xyoxr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_44esh")
+}],
+"loop": 1,
+"name": &"Dead",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8gq4n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_78ugp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1xf5c")
+}],
+"loop": 1,
+"name": &"Jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8xy3n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_curdl")
+}],
+"loop": 1,
+"name": &"Move",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ut84")
+}],
+"loop": 1,
+"name": &"Peeking",
+"speed": 5.0
+}]
+
 [node name="WaterElementalPuddle" type="Node2D" unique_id=23415017]
+script = ExtResource("1_7ns4s")
+water_elemental_scene = ExtResource("2_ddsv4")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=146673846]
+sprite_frames = SubResource("SpriteFrames_xyoxr")
+animation = &"Move"
+flip_h = true
+
+[node name="CPUParticles2D" parent="." unique_id=610266993 instance=ExtResource("3_ddsv4")]
+emitting = false

@@ -1,3 +1,15 @@
 [gd_scene format=3 uid="uid://uggu2ofluv72"]
 
-[node name="WaterElementalSplit" type="Node2D" unique_id=578944356]
+[ext_resource type="Script" uid="uid://djsqwpg7wphpx" path="res://Scripts/Enemies/Water Elemental/water_elemental_split.gd" id="1_4s1wp"]
+[ext_resource type="PackedScene" uid="uid://dkuqfihdtprr6" path="res://Scenes/Enemies/Water Elemental/water_elemental_puddle.tscn" id="2_t5scj"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_126ht"]
+
+[node name="WaterElementalSplit" type="CharacterBody2D" unique_id=1720201550]
+collision_layer = 32
+script = ExtResource("1_4s1wp")
+puddle_scene = ExtResource("2_t5scj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1460365948]
+scale = Vector2(0.2, 0.2)
+shape = SubResource("CircleShape2D_126ht")
