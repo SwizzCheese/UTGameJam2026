@@ -35,8 +35,6 @@ var max_spell = 3
 @onready var transition_root: Control = $TransitionLayer/TransitionRoot
 
 
-
-
 func _ready() -> void:
 	_init_player()
 	#Global.player.change_spell(1)
@@ -67,6 +65,7 @@ func _input(event: InputEvent) -> void:
 		pause_root.show_pause_screen()
 	if event.is_action_pressed("change_spell"):
 		change_spell()
+
 	
 
 #region level loading
