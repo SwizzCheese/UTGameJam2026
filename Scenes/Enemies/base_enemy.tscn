@@ -1,99 +1,38 @@
 [gd_scene format=3 uid="uid://bpnxt7kktyuba"]
 
 [ext_resource type="Script" uid="uid://qajimfn3321c" path="res://Scripts/base_enemy.gd" id="1_hkymu"]
-[ext_resource type="Texture2D" uid="uid://ihla0y283nxd" path="res://Assets/Ballenemy.png" id="2_b3u8b"]
+[ext_resource type="Texture2D" uid="uid://nyroyh80wbw6" path="res://Assets/icon.svg" id="2_b3u8b"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_oof5d"]
-atlas = ExtResource("2_b3u8b")
-region = Rect2(0, 0, 50, 50)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g4v7s"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_t83mw"]
-atlas = ExtResource("2_b3u8b")
-region = Rect2(50, 0, 50, 50)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_pwtvn"]
-atlas = ExtResource("2_b3u8b")
-region = Rect2(100, 0, 50, 50)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_g4v7s"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_oof5d")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_t83mw")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_pwtvn")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_oof5d")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_oof5d")
-}],
-"loop": 1,
-"name": &"default",
-"speed": 5.0
-}]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_yf5fn"]
-radius = 13.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_57qmd"]
-radius = 15.0
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_g4v7s"]
-particle_flag_disable_z = true
-angle_min = -720.0
-angle_max = 568.4
-direction = Vector3(0, -1, 0)
-spread = 90.0
-initial_velocity_min = 94.74
-initial_velocity_max = 131.58
-gravity = Vector3(0, 98, 0)
-scale_min = 0.5
-scale_max = 2.0
-color = Color(1, 0.45882353, 0, 1)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
+size = Vector2(22, 32)
 
 [node name="BaseEnemy" type="CharacterBody2D" unique_id=1148401797 groups=["enemy"]]
 collision_layer = 8
 script = ExtResource("1_hkymu")
 metadata/_custom_type_script = "uid://dwwlfvsw84jf7"
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1016030234]
-z_index = 1
-position = Vector2(-0.99999994, -5.999999)
-scale = Vector2(0.85, 0.85)
-sprite_frames = SubResource("SpriteFrames_g4v7s")
-autoplay = "default"
-frame_progress = 0.39018717
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1227632157]
+modulate = Color(3.0864043, 0, 0, 1)
+position = Vector2(1.9073486e-06, 1.9073486e-06)
+scale = Vector2(0.15625, 0.234375)
+texture = ExtResource("2_b3u8b")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1211965126]
-shape = SubResource("CircleShape2D_yf5fn")
+shape = SubResource("CapsuleShape2D_g4v7s")
 
 [node name="hitbox" type="Area2D" parent="." unique_id=159798388]
 collision_layer = 8
 collision_mask = 34
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox" unique_id=765544361]
-shape = SubResource("CircleShape2D_57qmd")
+shape = SubResource("RectangleShape2D_g4v7s")
 
 [node name="WallDetector" type="RayCast2D" parent="." unique_id=729549482]
 target_position = Vector2(15, 0)
 collision_mask = 3
 
 [node name="PushTimer" type="Timer" parent="." unique_id=1963283621]
-
-[node name="deathparticles" type="GPUParticles2D" parent="." unique_id=502194488]
-z_index = 1
-emitting = false
-amount = 50
-lifetime = 0.75
-one_shot = true
-speed_scale = 1.5
-randomness = 0.3
-process_material = SubResource("ParticleProcessMaterial_g4v7s")
 
 [connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]
