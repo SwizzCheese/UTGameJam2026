@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://dp000sln6nyeq"]
+
+[ext_resource type="Script" uid="uid://c0ce81b0eymy4" path="res://Scenes/Enemies/orb.gd" id="1_moloc"]
+[ext_resource type="Material" uid="uid://c76nxn8v74pqd" path="res://Materials/OrbMaterial.tres" id="2_7403d"]
+[ext_resource type="Texture2D" uid="uid://bha5okpjfyj4d" path="res://Assets/MonsterSpritesheets/OrbSprite.png" id="2_hkbbr"]
+
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_moloc"]
+radius = 6.0827627
+
+[node name="Orb" type="Area2D" unique_id=596961433]
+collision_layer = 8
+collision_mask = 14
+script = ExtResource("1_moloc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2098962694]
+shape = SubResource("CircleShape2D_moloc")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=1801062506]
+amount = 30
+lifetime = 2.0
+process_material = ExtResource("2_7403d")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=96029061]
+position = Vector2(0, -1)
+texture = ExtResource("2_hkbbr")
+
+[node name="InvincibleTimer" type="Timer" parent="." unique_id=32811291]
+wait_time = 0.7

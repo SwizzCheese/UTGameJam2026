@@ -25,8 +25,6 @@ func _ready() -> void:
 	explode_timer.start()
 
 
-
-
 func explode() -> void:
 	#explode
 	print("bomb exploded, type: "+ str(type))
@@ -35,3 +33,4 @@ func explode() -> void:
 
 func give_type(spell_type:int):
 	type = spell_type
+	print("bomb is of type: "+ str(type))

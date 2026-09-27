@@ -3,6 +3,7 @@
 [ext_resource type="Material" uid="uid://kmykae7e64vi" path="res://Materials/BombMaterials/FireBombMaterial.tres" id="1_gljj0"]
 
 [node name="BombParticles" type="GPUParticles2D" unique_id=685245192]
+z_index = 1
 emitting = false
 amount = 150
 lifetime = 0.5

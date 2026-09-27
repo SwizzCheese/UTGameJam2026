@@ -82,11 +82,13 @@ func timer_timout() -> void:
 
 #receives the bomb type and assigns correct material to BombParticles
 func receive_bomb_type(bomb_type:int) -> void:
+	type = bomb_type
 	var path:String = "res://Materials/BombMaterials/"
 	if bomb_type == 0:
 		bomb_particles.process_material = load(path +"FireBombMaterial.tres")
 	elif bomb_type ==1:
 		bomb_particles.process_material = load(path +"WaterBombMaterial.tres")
+		
 	elif bomb_type ==2:
 		bomb_particles.process_material = load(path +"PlantBombMaterial.tres")
 	elif bomb_type ==3:
@@ -96,7 +98,7 @@ func receive_bomb_type(bomb_type:int) -> void:
 	#print("type material correctly loaded (explosion_base)")
 
 func damage(area:Node2D) -> void:
-	print("damage area sees: "+ str(area))
+	#print("damage area sees: "+ str(area))
 	var ray = RayCast2D.new()
 	add_child(ray)
 	
@@ -106,15 +108,15 @@ func damage(area:Node2D) -> void:
 	
 	if not ray.is_colliding():
 		if area.owner.has_method("damaged"): #|| area is Enemy || area is Destroyable:
-			print("damaging player")
+			
 			var damage_array:Array[int] = [1, 0, 0, 0, 0]
-			if type ==1:
+			if type ==0:
 				damage_array = [1, 1, 0, 0, 0]
-			elif type ==2:
+			elif type ==1:
 				damage_array = [1, 0, 1, 0, 0]
-			elif type ==3:
+			elif type ==2:
 				damage_array = [1, 0, 0, 1, 0]
-			elif type ==4:
+			elif type ==3:
 				damage_array = [1, 0, 0, 0, 1]
+			print("damaging creature: "+ str(damage_array))
 			area.owner.damaged(damage_array)
-	

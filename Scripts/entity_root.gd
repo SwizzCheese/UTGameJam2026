@@ -9,6 +9,9 @@ func add_entity(entity:Node2D):
 	if entity is FurniturePiece:
 		entity.call_deferred("reparent",(self))
 		entity.call_deferred("set_global_position",  pos)
+	else:
+		entity.call_deferred("reparent",(self))
+		entity.call_deferred("set_global_position",  pos)
 	add_child(entity)
 	print("entity added")
 

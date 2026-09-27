@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://bv5cw8x5lhq7b"]
+
+[ext_resource type="PackedScene" uid="uid://dgc6ljw2xrqyf" path="res://Scenes/Objects/pushable_rigid_body.tscn" id="1_vwo5q"]
+[ext_resource type="Texture2D" uid="uid://bhvbavkos2i1w" path="res://Assets/BombWiizard_Pillar.png" id="2_rev20"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_s62bi"]
+friction = 20.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s62bi"]
+size = Vector2(12, 10)
+
+[node name="PillarPiece2" unique_id=2013807626 instance=ExtResource("1_vwo5q")]
+collision_layer = 64
+collision_mask = 33
+mass = 0.6
+physics_material_override = SubResource("PhysicsMaterial_s62bi")
+linear_damp = 5.0
+angular_damp = 1.0
+extra_strength = 10
+
+[node name="Sprite2D" parent="." index="0" unique_id=763419289]
+texture = ExtResource("2_rev20")
+region_enabled = true
+region_rect = Rect2(0, 9, 16, 11)
+
+[node name="CollisionShape2D" parent="." index="1" unique_id=1987557417]
+shape = SubResource("RectangleShape2D_s62bi")

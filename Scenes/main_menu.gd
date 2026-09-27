@@ -7,6 +7,7 @@ func _ready() -> void:
 	$CanvasLayer/Control/Button.pressed.connect(_on_button_pressed)
 	$CanvasLayer/Control/Button3	.pressed.connect(_on_button_2_pressed)
 	$CanvasLayer/Control/Button2.pressed.connect(_on_quiz_pressed)
+	Global.return_to_menu.connect(open_main_menu)
 
 
 
