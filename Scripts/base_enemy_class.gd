@@ -18,7 +18,6 @@ func change_direction():
 
 
 func pushed(dir:Vector2, strength:float):
-	
 	pass
 
 

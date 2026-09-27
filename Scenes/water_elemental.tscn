@@ -83,7 +83,7 @@ height = 16.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_126ht"]
 size = Vector2(18, 23.75)
 
-[node name="WaterElemental" type="CharacterBody2D" unique_id=308782645]
+[node name="WaterElemental" type="CharacterBody2D" unique_id=308782645 groups=["enemy"]]
 script = ExtResource("1_8xy3n")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1635740889]
@@ -109,3 +109,5 @@ target_position = Vector2(-11, 0)
 collide_with_areas = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1379859631]
+
+[node name="Timer" type="Timer" parent="." unique_id=1216115221]

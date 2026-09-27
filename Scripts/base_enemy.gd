@@ -1,11 +1,10 @@
 extends BaseEnemy
 #This is the script for a basic enemy, like a goblin.
-
 @onready var wall_detector = $WallDetector
 @onready var push_timer = $PushTimer
 
 func _ready() -> void:
-	speed = 100.0
+	speed = 450.0
 	direction = 1.0
 	health = 1
 	acceleration = 0.1
@@ -25,10 +24,7 @@ func _physics_process(delta: float) -> void:
 	
 	if health <= 0:
 		destroyed()
-	
 	move_and_slide()
-
-
 
 
 func _on_hitbox_area_entered(area: Area2D) -> void:
