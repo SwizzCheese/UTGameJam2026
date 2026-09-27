@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b20lum3ehuli4"
+path="res://.godot/imported/BOMB_WIZARDS Theme.wav-2e33e39668e5d07653fca223d3cd4b0b.sample"
+
+[deps]
+
+source_file="res://Assets/Soundeffects/BOMB_WIZARDS Theme.wav"
+dest_files=["res://.godot/imported/BOMB_WIZARDS Theme.wav-2e33e39668e5d07653fca223d3cd4b0b.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=true
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
