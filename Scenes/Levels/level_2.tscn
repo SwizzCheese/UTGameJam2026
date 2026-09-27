@@ -5,6 +5,9 @@
 [ext_resource type="PackedScene" uid="uid://dq5m0dl6u1xng" path="res://Scenes/Objects/pillar.tscn" id="3_oylv5"]
 [ext_resource type="PackedScene" uid="uid://bq8nxm4acyj8w" path="res://Scenes/Objects/exit.tscn" id="4_w2ac1"]
 [ext_resource type="Texture2D" uid="uid://c00mfem341rd3" path="res://Assets/BombWiizard_TileMap.png" id="5_ovj6s"]
+[ext_resource type="PackedScene" uid="uid://c8gnjd7kuberi" path="res://Scenes/rubble_particle.tscn" id="6_8qsmg"]
+[ext_resource type="PackedScene" uid="uid://htc1ifx7pa6e" path="res://Scenes/Enemies/fire_enemy.tscn" id="7_fphuk"]
+[ext_resource type="Texture2D" uid="uid://bggy3pngfkopx" path="res://Assets/Numbers0-9.png" id="8_pnnky"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8qsmg"]
 texture = ExtResource("5_ovj6s")
@@ -114,3 +117,22 @@ position = Vector2(136, 0)
 
 [node name="Pillar4" parent="." unique_id=2063021926 instance=ExtResource("3_oylv5")]
 position = Vector2(-136, -16)
+
+[node name="RubbleParticle" parent="." unique_id=1986287931 instance=ExtResource("6_8qsmg")]
+position = Vector2(136, 88)
+rotation = -6.2831855
+emitting = false
+
+[node name="RubbleParticle2" parent="." unique_id=1327600240 instance=ExtResource("6_8qsmg")]
+position = Vector2(-144, 80)
+rotation = -3.1415927
+emitting = false
+
+[node name="FireEnemy" parent="." unique_id=1950619201 instance=ExtResource("7_fphuk")]
+position = Vector2(-32, 40)
+
+[node name="CountdownSprite" type="Sprite2D" parent="." unique_id=1910177160]
+position = Vector2(0, -56)
+scale = Vector2(2, 2)
+texture = ExtResource("8_pnnky")
+hframes = 10
