@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://d3sg41wcmo0fx" path="res://Scenes/UI/death_screen.tscn" id="6_ckhy6"]
 [ext_resource type="Script" uid="uid://dmslk1yx6nlk8" path="res://Scripts/pause_root.gd" id="6_dun2r"]
 [ext_resource type="PackedScene" uid="uid://dxn7fjd34wm82" path="res://Scenes/UI/pause_screen.tscn" id="8_r3lo5"]
+[ext_resource type="PackedScene" uid="uid://ux64pxsg4rme" path="res://Scenes/MainMenu.tscn" id="9_qtxxq"]
 
 [node name="Root" type="Node" unique_id=1985020797]
 script = ExtResource("1_i04dx")
@@ -40,11 +41,13 @@ script = ExtResource("4_c3mwy")
 [node name="PauseLayer" type="CanvasLayer" parent="." unique_id=1054137064]
 
 [node name="PauseRoot" type="Control" parent="PauseLayer" unique_id=1611380900]
-visible = false
+process_mode = 3
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("6_dun2r")
 
 [node name="DeathScreen" parent="PauseLayer/PauseRoot" unique_id=720936592 instance=ExtResource("6_ckhy6")]
@@ -86,3 +89,8 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="MainMenu" parent="MenuLayer/MenuRoot" unique_id=1483959886 instance=ExtResource("9_qtxxq")]
+layout_mode = 0
+offset_right = 0.0
+offset_bottom = 0.0

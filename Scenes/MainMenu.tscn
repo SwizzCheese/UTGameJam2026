@@ -1,23 +1,33 @@
 [gd_scene format=3 uid="uid://ux64pxsg4rme"]
 
-[ext_resource type="Script" path="res://Scenes/main_menu.gd" id="1_853f1"]
-[ext_resource type="Texture2D" path="res://Assets/MenuBackground.png" id="2_8saeu"]
+[ext_resource type="Script" uid="uid://ba2g4pwptu3q4" path="res://Scenes/main_menu.gd" id="1_853f1"]
+[ext_resource type="Texture2D" uid="uid://3cbw4ik1mexh" path="res://Assets/MenuBackground.png" id="2_8saeu"]
 
-[node name="MainMenu" type="Node2D" unique_id=1119867714]
+[node name="MainMenu" type="Control" unique_id=1483959886]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+offset_transform_scale = Vector2(0.5, 0.5)
 script = ExtResource("1_853f1")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=142432783]
+scale = Vector2(0.5, 0.5)
+transform = Transform2D(0.5, 0, 0, 0.5, 0, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer" unique_id=1129594947]
-position = Vector2(643, 222)
-scale = Vector2(1.4492188, 1.4958333)
+position = Vector2(544, 320)
 texture = ExtResource("2_8saeu")
 
 [node name="Control" type="Control" parent="CanvasLayer" unique_id=1807585051]
+process_mode = 3
 layout_mode = 3
-anchors_preset = 0
-offset_right = 1209.0
-offset_bottom = 658.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Button" type="Button" parent="CanvasLayer/Control" unique_id=89131363]
 layout_mode = 0
@@ -42,7 +52,3 @@ offset_top = 243.0
 offset_right = 828.0
 offset_bottom = 421.0
 text = "Options"
-
-[connection signal="pressed" from="CanvasLayer/Control/Button" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/Control/Button3" to="." method="_on_quiz_pressed"]
-[connection signal="pressed" from="CanvasLayer/Control/Button2" to="." method="_on_button_2_pressed"]

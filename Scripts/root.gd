@@ -42,6 +42,8 @@ func _ready() -> void:
 	#Global.player.change_spell(1)
 	Global.root = self
 	load_level(1)
+	
+	Global.player_died.connect(open_death_screen)
 
 
 
@@ -158,6 +160,9 @@ func show_level_clear_screen():
 func hide_level_clear_screen():
 	$TransitionLayer/TransitionRoot/Label.visible = false
 
+func open_death_screen():
+	pause_root.show_death_screen()
+	
 func change_spell()-> void: 
 	if current_spell + 1 >max_spell:
 		current_spell =0
