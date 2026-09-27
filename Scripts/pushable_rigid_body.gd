@@ -1,11 +1,18 @@
 class_name PushableRigidBody extends RigidBody2D
 
 var lives: int = 4
+@export var extra_strength:int = 1
+@export var start_disabled: bool = false
 
 func pushed(dir:Vector2, strength:float):#origin:Vector2
 	#vel = velocity = power * direction, origin = origin of blast
-	apply_impulse(dir * strength)
-	print("impulse applied, strength: "+str(strength))
+	freeze = false
+	sleeping = false
+	var impulse:Vector2 = Vector2(dir.x *strength * extra_strength, dir.y)
+	if impulse.y<-50:
+		impulse = Vector2(dir.x *strength * extra_strength, -50)
+	apply_impulse(impulse)
+	print(name +"impulse applied, "+str(impulse)+" frozen = "+ str(freeze))
 
 func damaged(damage_array:Array[int]):
 	pass

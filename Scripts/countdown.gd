@@ -7,6 +7,7 @@ extends Control
 func _ready() -> void:
 	Global.give_HUD_time.connect(receive_time)
 	Global.level_won.connect(pause_timer)
+	timer.paused = true
 	label.hide()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

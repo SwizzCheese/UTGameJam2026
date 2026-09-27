@@ -18,7 +18,6 @@ func _ready() -> void:
 	i_won = false
 	in_collapse_cutscene = false
 	in_countdown = false
-	Global.give_HUD_time.emit(countdown_timer.wait_time)
 	
 
 func _input(event: InputEvent) -> void:
@@ -52,6 +51,7 @@ func pillar_destroyed():
 
 func start_countdown():
 	countdown_timer.start()
+	Global.give_HUD_time.emit(countdown_timer.wait_time)
 	exit.open_exit()
 	in_countdown = true
 

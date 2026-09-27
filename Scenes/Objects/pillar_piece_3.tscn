@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://bkapn6uvbr1yp"]
+
+[ext_resource type="PackedScene" uid="uid://dgc6ljw2xrqyf" path="res://Scenes/Objects/pushable_rigid_body.tscn" id="1_oc5yy"]
+[ext_resource type="Script" uid="uid://rwyw6v4qicfr" path="res://Scenes/Objects/pillar_piece_3.gd" id="2_0ettb"]
+[ext_resource type="Texture2D" uid="uid://bhvbavkos2i1w" path="res://Assets/BombWiizard_Pillar.png" id="2_lshd1"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_vwo5q"]
+friction = 20.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0ettb"]
+size = Vector2(12, 9)
+
+[node name="PillarPiece3" unique_id=2013807626 instance=ExtResource("1_oc5yy")]
+collision_layer = 64
+collision_mask = 33
+mass = 0.6
+physics_material_override = SubResource("PhysicsMaterial_vwo5q")
+linear_damp = 5.0
+angular_damp = 1.0
+script = ExtResource("2_0ettb")
+extra_strength = 5
+
+[node name="Sprite2D" parent="." index="0" unique_id=763419289]
+texture = ExtResource("2_lshd1")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 10)
+
+[node name="CollisionShape2D" parent="." index="1" unique_id=1987557417]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_0ettb")

@@ -15,12 +15,9 @@ min_power = 20
 max_push = 70.0
 min_push = 5.0
 
-
-
 [node name="ExplosionArea" type="Area2D" parent="." unique_id=1648576931 groups=["explosion"]]
-
 collision_layer = 32
-collision_mask = 14
+collision_mask = 78
 
 [node name="Explosion_Collision" type="CollisionShape2D" parent="ExplosionArea" unique_id=2049857158 groups=["explosion"]]
 shape = SubResource("CircleShape2D_a801j")

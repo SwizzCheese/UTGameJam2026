@@ -3,7 +3,8 @@ extends StaticBody2D
 
 
 func _ready() -> void:
-	pass
+	for child in $Pieces.get_children():
+		child.freeze = true
 
 
 
@@ -20,5 +21,10 @@ func _on_hitbox_area_entered(area: Area2D) -> void:
 			owner.pillar_destroyed()
 			# play destroyed animation
 			# await destroyed animation finish
-			queue_free()
+			for child in $Pieces.get_children():
+				child.set_deferred("freeze", false)
+			$CollisionShape2D.queue_free()
+			$Sprite2D.queue_free()
+			$hitbox.queue_free()
+			#queue_free()
 	

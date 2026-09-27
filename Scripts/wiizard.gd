@@ -184,7 +184,6 @@ func damaged(damage_array:Array[int]):
 func destroyed():
 	Global.player_died.emit()
 	print("player dies")
-	queue_free()
 
 func invincible_timer_timeout():
 	hurting = false
