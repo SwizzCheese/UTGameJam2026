@@ -19,7 +19,7 @@ func _input(event: InputEvent) -> void:
 
 ## Provides the player spawn point:
 func get_default_player_spawn() -> Vector2:
-	return marker_2d.position
+	return marker_2d.global_position
 
 ## Provides the camera used in the level:
 #func get_player_camera() -> Camera2D:

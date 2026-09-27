@@ -17,7 +17,6 @@ signal exploded(int, Vector2) #type, global_pos
 func _ready() -> void:
 	
 	explode_timer.timeout.connect(explode)
-	#thrown.emit
 	var velocity : Vector2
 	velocity.x = initial_velocity.x * direction.x
 	velocity.y = initial_velocity.y * direction.y
