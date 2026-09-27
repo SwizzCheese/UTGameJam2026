@@ -2,11 +2,13 @@
 
 [ext_resource type="Script" uid="uid://bka6ibjfvjq06" path="res://Scripts/explosion.gd" id="1_3ky1t"]
 [ext_resource type="PackedScene" uid="uid://ttha2jxbh3it" path="res://Scenes/bomb_particles.tscn" id="2_g6j8h"]
+[ext_resource type="Material" uid="uid://cchiuiaol6uc8" path="res://Materials/BombMaterials/PlantBombMaterial.tres" id="3_q0ylo"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_a801j"]
 radius = 1.0
 
 [node name="ExplosionBase" type="Node2D" unique_id=61808947 groups=["PushableBodies"]]
+z_index = 1
 script = ExtResource("1_3ky1t")
 time = 0.5
 max_radius = 50.0
@@ -28,3 +30,6 @@ shape = SubResource("CircleShape2D_a801j")
 wait_time = 0.5
 
 [node name="BombParticles" parent="." unique_id=685245192 instance=ExtResource("2_g6j8h")]
+lifetime = 1.0
+speed_scale = 1.0
+process_material = ExtResource("3_q0ylo")

@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://d2wrgsnpb656k"]
+
+[ext_resource type="PackedScene" uid="uid://ttha2jxbh3it" path="res://Scenes/bomb_particles.tscn" id="1_mlwu6"]
+[ext_resource type="Material" uid="uid://c1apj0gncvat4" path="res://Materials/BombMaterials/AirBombMaterial.tres" id="2_suufm"]
+
+[node name="UltimateBombParticles" unique_id=685245192 instance=ExtResource("1_mlwu6")]
+amount = 200
+lifetime = 2.5
+process_material = ExtResource("2_suufm")

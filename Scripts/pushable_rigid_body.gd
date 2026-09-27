@@ -9,8 +9,8 @@ func pushed(dir:Vector2, strength:float):#origin:Vector2
 	freeze = false
 	sleeping = false
 	var impulse:Vector2 = Vector2(dir.x *strength * extra_strength, dir.y)
-	if impulse.y<-50:
-		impulse = Vector2(dir.x *strength * extra_strength, -50)
+	if impulse.y<-300:
+		impulse = Vector2(dir.x *strength * extra_strength, -300)
 	apply_impulse(impulse)
 	print(name +"impulse applied, "+str(impulse)+" frozen = "+ str(freeze))
 

@@ -96,7 +96,7 @@ func receive_bomb_type(bomb_type:int) -> void:
 	#print("type material correctly loaded (explosion_base)")
 
 func damage(area:Node2D) -> void:
-	print("damage area sees: "+ str(area))
+	#print("damage area sees: "+ str(area))
 	var ray = RayCast2D.new()
 	add_child(ray)
 	
@@ -117,4 +117,3 @@ func damage(area:Node2D) -> void:
 			elif type ==4:
 				damage_array = [1, 0, 0, 0, 1]
 			area.owner.damaged(damage_array)
-	
