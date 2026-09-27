@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://coaql1qo8gh8v"]
 
 [ext_resource type="PackedScene" uid="uid://bosjxkdkr7oak" path="res://Scenes/water_droplets.tscn" id="1_5pgmd"]
+[ext_resource type="Script" uid="uid://cd6k2hewunrdu" path="res://Scenes/water_elemental.gd" id="1_8xy3n"]
 [ext_resource type="Texture2D" uid="uid://djln63nfa87tv" path="res://Assets/HighResWaterElemental.png" id="1_jy3dd"]
-[ext_resource type="Script" uid="uid://dmypeu5v0r6hk" path="res://Scenes/animated_sprite_2d.gd" id="2_8xy3n"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_44esh"]
 atlas = ExtResource("1_jy3dd")
@@ -76,22 +76,36 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_126ht"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_d2rsb"]
+radius = 4.0
+height = 16.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_126ht"]
+size = Vector2(18, 23.75)
 
 [node name="WaterElemental" type="CharacterBody2D" unique_id=308782645]
+script = ExtResource("1_8xy3n")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1635740889]
 sprite_frames = SubResource("SpriteFrames_jy3dd")
 animation = &"Move"
-script = ExtResource("2_8xy3n")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1765074140]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_d2rsb")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1959846872]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=328941002]
+position = Vector2(0.5, 0.50000006)
+rotation = 1.5707964
+scale = Vector2(0.5, 0.8)
+shape = SubResource("RectangleShape2D_126ht")
 
 [node name="CPUParticles2D" parent="." unique_id=610266993 instance=ExtResource("1_5pgmd")]
-visible = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=328941002]
-position = Vector2(-1, 1)
-rotation = 1.5707964
-scale = Vector2(0.5, 0.5)
-shape = SubResource("CapsuleShape2D_126ht")
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=1474774337]
+target_position = Vector2(-11, 0)
+collide_with_areas = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1379859631]

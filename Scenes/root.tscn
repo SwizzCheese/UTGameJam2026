@@ -29,6 +29,7 @@ visible = false
 script = ExtResource("2_8pvmw")
 
 [node name="WaterElemental" parent="World/EntityRoot" unique_id=308782645 instance=ExtResource("3_a6f85")]
+visible = false
 
 [node name="EffectRoot" type="Node2D" parent="World" unique_id=664201914]
 visible = false
