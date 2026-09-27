@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dq5m0dl6u1xng" path="res://Scenes/Objects/pillar.tscn" id="3_167vu"]
 [ext_resource type="PackedScene" uid="uid://bq8nxm4acyj8w" path="res://Scenes/Objects/exit.tscn" id="4_x1k1j"]
 [ext_resource type="Texture2D" uid="uid://c00mfem341rd3" path="res://Assets/BombWiizard_TileMap.png" id="5_4ahh4"]
+[ext_resource type="PackedScene" uid="uid://c8gnjd7kuberi" path="res://Scenes/rubble_particle.tscn" id="6_yy6i0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8qsmg"]
 texture = ExtResource("5_4ahh4")
@@ -126,3 +127,13 @@ position = Vector2(-136, 0)
 
 [node name="BaseEnemy2" parent="." unique_id=293677940 instance=ExtResource("2_yy6i0")]
 position = Vector2(-72, -48)
+
+[node name="RubbleParticle" parent="." unique_id=1986287931 instance=ExtResource("6_yy6i0")]
+position = Vector2(136, 88)
+rotation = -6.2831855
+emitting = false
+
+[node name="RubbleParticle2" parent="." unique_id=703566455 instance=ExtResource("6_yy6i0")]
+position = Vector2(-144, 80)
+rotation = -3.1415927
+emitting = false
