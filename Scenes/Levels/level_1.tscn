@@ -88,7 +88,7 @@ position = Vector2(37, 58)
 position = Vector2(-144, 64)
 
 [node name="CountdownTimer" type="Timer" parent="." unique_id=1179299819]
-wait_time = 5.0
+wait_time = 15.0
 
 [node name="Exit" parent="." unique_id=1418619089 instance=ExtResource("5_cyadu")]
 position = Vector2(144, 64)
