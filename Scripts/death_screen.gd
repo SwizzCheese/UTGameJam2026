@@ -4,11 +4,9 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	
-	
 	$respawn_button.pressed.connect(respawn)
 	$quit_button.pressed.connect(quit_to_menu)
-	#hide()
+	hide()
 
 func _gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
@@ -16,15 +14,6 @@ func _gui_input(event: InputEvent) -> void:
 		
 
 func _input(event: InputEvent) -> void:
-	var mouse_hovering: bool = false
-	
-	if $respawn_button.is_hovered():
-		print("hey guys mouse is here")
-		
-	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-			print("I've been clicked D:")
-			
 	if event.is_action_pressed("spacebar"):
 		close_death_screen()
 
