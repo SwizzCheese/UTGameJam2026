@@ -170,14 +170,16 @@ func pushed(dir:Vector2, strength:float):
 	#print("Wiizard VELOCITY CHANGED: "+ str(velocity))
 
 func damaged(damage_array:Array[int]):
-	hurting = true
-	health = health - damage_array[0]
-	if health <= 0:
-		destroyed()
-	else:
-		Global.player_hurt.emit(health)
-	$hitbox/hitbox_collision.set_deferred("disabled", true)
-	invincible_timer.start()
+	if !in_cutscene:
+		
+		hurting = true
+		health = health - damage_array[0]
+		if health <= 0:
+			destroyed()
+		else:
+			Global.player_hurt.emit(health)
+		$hitbox/hitbox_collision.set_deferred("disabled", true)
+		invincible_timer.start()
 	
 	
 

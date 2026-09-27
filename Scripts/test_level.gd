@@ -21,6 +21,7 @@ func _ready() -> void:
 	in_countdown = false
 	Global.give_HUD_time.emit(countdown_timer.wait_time)
 	countdown_sprite.visible = false
+	Global.player.in_cutscene = false
 
 func _input(event: InputEvent) -> void:
 	if event.is_action("throw_bomb"):
