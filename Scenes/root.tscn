@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://ux64pxsg4rme" path="res://Scenes/MainMenu.tscn" id="9_qtxxq"]
 
 [node name="Root" type="Node" unique_id=1985020797]
+process_mode = 3
 script = ExtResource("1_i04dx")
 
 [node name="Systems" type="Node" parent="." unique_id=387909024]
@@ -43,6 +44,7 @@ script = ExtResource("4_c3mwy")
 layout_mode = 1
 
 [node name="PauseLayer" type="CanvasLayer" parent="." unique_id=1054137064]
+process_mode = 3
 
 [node name="PauseRoot" type="Control" parent="PauseLayer" unique_id=1611380900]
 process_mode = 3

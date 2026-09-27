@@ -67,6 +67,7 @@ func _input(event: InputEvent) -> void:
 		pause_root.show_pause_screen()
 	if event.is_action_pressed("change_spell"):
 		change_spell()
+
 	
 
 #region level loading
