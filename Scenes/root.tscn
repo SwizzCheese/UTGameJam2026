@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://b1vbvcqfbfunn" path="res://Scenes/UI/countdown.tscn" id="6_8fnbn"]
 [ext_resource type="PackedScene" uid="uid://d3sg41wcmo0fx" path="res://Scenes/UI/death_screen.tscn" id="6_ckhy6"]
 [ext_resource type="Script" uid="uid://dmslk1yx6nlk8" path="res://Scripts/pause_root.gd" id="6_dun2r"]
+[ext_resource type="PackedScene" uid="uid://denx065volq21" path="res://Scenes/Spells.tscn" id="7_a6f85"]
 [ext_resource type="PackedScene" uid="uid://dxn7fjd34wm82" path="res://Scenes/UI/pause_screen.tscn" id="8_r3lo5"]
 [ext_resource type="PackedScene" uid="uid://ux64pxsg4rme" path="res://Scenes/MainMenu.tscn" id="9_qtxxq"]
 
@@ -43,6 +44,8 @@ script = ExtResource("4_c3mwy")
 
 [node name="Countdown" parent="HudLayer/HudRoot" unique_id=1563059031 instance=ExtResource("6_8fnbn")]
 layout_mode = 1
+
+[node name="Spells" parent="HudLayer/HudRoot" unique_id=1598564330 instance=ExtResource("7_a6f85")]
 
 [node name="PauseLayer" type="CanvasLayer" parent="." unique_id=1054137064]
 process_mode = 3
