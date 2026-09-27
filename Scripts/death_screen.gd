@@ -30,6 +30,7 @@ func close_death_screen() -> void:
 
 func respawn()-> void:
 	print("button pressed")
+	Global.root._init_player()
 	Global.root.load_level(1)
 	hide()
 	get_tree().paused = false

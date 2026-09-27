@@ -22,22 +22,22 @@ offset_bottom = 320.0
 mouse_filter = 2
 color = Color(1, 0.48235294, 1, 1)
 
-[node name="Button" type="Button" parent="ColorRect" unique_id=1699017255]
+[node name="Button" type="Button" parent="." unique_id=1699017255]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -29.0
-offset_top = -15.5
-offset_right = 29.0
-offset_bottom = 15.5
+offset_left = 243.0
+offset_top = 144.5
+offset_right = 301.0
+offset_bottom = 175.5
 grow_horizontal = 2
 grow_vertical = 2
 text = "return"
 
-[node name="Label" type="Label" parent="ColorRect" unique_id=1016482210]
+[node name="Label" type="Label" parent="." unique_id=1016482210]
 layout_mode = 0
 offset_left = 199.0
 offset_top = 101.0
