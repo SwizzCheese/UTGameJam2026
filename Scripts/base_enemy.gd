@@ -36,10 +36,17 @@ func _on_hitbox_area_entered(area: Area2D) -> void:
 		var damage_array : Array[int] = [1,0,0,0,0]
 		area.damaged(damage_array)
 	elif area.is_in_group("explosion"):
-		being_pushed = true
-		push_timer.start()
-		var damage_array : Array[int] = [1,0,0,0,0]
-		damaged(damage_array)
+		var ray = RayCast2D.new()
+		add_child(ray)
+		#Detect if the explosion is through a wall
+		ray.target_position = area.global_position - global_position
+		ray.force_raycast_update()
+		if not ray.is_colliding():
+			
+			being_pushed = true
+			push_timer.start()
+			var damage_array : Array[int] = [1,0,0,0,0]
+			damaged(damage_array)
 	elif area.is_in_group("pusher"):
 		pass
 	elif area.is_in_group("lightning_burst"):

@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://dht1sw7qwnisy"]
+
+[ext_resource type="Script" uid="uid://ifxrcdneu6de" path="res://Scenes/UI/ending_screen.gd" id="1_16xjd"]
+[ext_resource type="Texture2D" uid="uid://dupdjet0yy8rb" path="res://Assets/New Project.png" id="2_423mw"]
+
+[node name="EndingScreen" type="Node2D" unique_id=1667696350]
+script = ExtResource("1_16xjd")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2000911320]
+position = Vector2(619, 319)
+texture = ExtResource("2_423mw")
+
+[node name="Label" type="Label" parent="Sprite2D" unique_id=784841561]
+offset_left = -285.0
+offset_top = -173.0
+offset_right = 168.0
+offset_bottom = -114.0
+text = "YOU WON!! YOU DID IT THANKS FOR PLAYING OUR GAME !!"
+
+[node name="Label2" type="Label" parent="Sprite2D" unique_id=732233047]
+offset_left = -340.0
+offset_right = 40.0
+offset_bottom = 170.0
+text = "SPECIAL THANKS TO SHAGGY, ZOEEY, PETER, ALEKSANDER, MICHAEL"

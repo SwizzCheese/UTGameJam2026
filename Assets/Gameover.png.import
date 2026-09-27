@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cre7qmjxkhd1x"
-path="res://.godot/imported/OrangeArrow.png-cd43c2cd30a20fee990638bd56b5121f.ctex"
+uid="uid://b43vgoa7u2f61"
+path="res://.godot/imported/Gameover.png-84ad3d87aba19708c7be6bb0516b5a3f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/OrangeArrow.png"
-dest_files=["res://.godot/imported/OrangeArrow.png-cd43c2cd30a20fee990638bd56b5121f.ctex"]
+source_file="res://Assets/Gameover.png"
+dest_files=["res://.godot/imported/Gameover.png-84ad3d87aba19708c7be6bb0516b5a3f.ctex"]
 
 [params]
 

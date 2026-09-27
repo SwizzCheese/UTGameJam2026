@@ -57,17 +57,25 @@ func _physics_process(delta: float) -> void:
 
 func on_entered(body:Node2D):
 	print(body.get_class())
-	var dir:Vector2 = body.global_position - self.global_position
-	if body is Player:
-		print("I SEE YOU: "+ str(body))
-		body.pushed(dir.normalized(), current_push)
-	if body.is_in_group("PushableRigid"):
-		#print("HELP ME!!!!!!!!!!!!!!")
-		body.pushed(dir.normalized(), current_push)
-		#apply_impulse((strength * direction, origin of impulse)
-		pass
-	if body.is_in_group("enemy"):
-		body.pushed(dir.normalized(), current_push)
+	var ray = RayCast2D.new()
+	add_child(ray)
+	
+	#Detect if the explosion is through a wall
+	ray.target_position = body.global_position - global_position
+	ray.force_raycast_update()
+	
+	if not ray.is_colliding():
+		var dir:Vector2 = body.global_position - self.global_position
+		if body is PushableCharBody:
+			print("I SEE YOU: "+ str(body))
+			body.pushed(dir.normalized(), current_push)
+		if body.is_in_group("PushableRigid"):
+			#print("HELP ME!!!!!!!!!!!!!!")
+			body.pushed(dir.normalized(), current_push)
+			#apply_impulse((strength * direction, origin of impulse)
+			pass
+		if body.is_in_group("enemy"):
+			body.pushed(dir.normalized(), current_push)
 
 func timer_timout() -> void:
 	queue_free()
@@ -89,16 +97,24 @@ func receive_bomb_type(bomb_type:int) -> void:
 
 func damage(area:Node2D) -> void:
 	print("damage area sees: "+ str(area))
-	if area.owner.has_method("damaged"): #|| area is Enemy || area is Destroyable:
-		print("damaging player")
-		var damage_array:Array[int] = [1, 0, 0, 0, 0]
-		if type ==1:
-			damage_array = [1, 1, 0, 0, 0]
-		elif type ==2:
-			damage_array = [1, 0, 1, 0, 0]
-		elif type ==3:
-			damage_array = [1, 0, 0, 1, 0]
-		elif type ==4:
-			damage_array = [1, 0, 0, 0, 1]
-		area.owner.damaged(damage_array)
+	var ray = RayCast2D.new()
+	add_child(ray)
+	
+	#Detect if the explosion is through a wall
+	ray.target_position = area.global_position - global_position
+	ray.force_raycast_update()
+	
+	if not ray.is_colliding():
+		if area.owner.has_method("damaged"): #|| area is Enemy || area is Destroyable:
+			print("damaging player")
+			var damage_array:Array[int] = [1, 0, 0, 0, 0]
+			if type ==1:
+				damage_array = [1, 1, 0, 0, 0]
+			elif type ==2:
+				damage_array = [1, 0, 1, 0, 0]
+			elif type ==3:
+				damage_array = [1, 0, 0, 1, 0]
+			elif type ==4:
+				damage_array = [1, 0, 0, 0, 1]
+			area.owner.damaged(damage_array)
 	

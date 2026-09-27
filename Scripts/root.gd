@@ -22,7 +22,7 @@ var max_hard_level : int = 6
 
 var current_spell = 0 #0 for fire, 1 for water, 2 for earth, 3 for air
 var max_spell = 3
-
+var center_point = Vector2.ZERO
 
 # Game World root nodes
 @onready var level_root: Node2D = $World/LevelRoot
@@ -33,6 +33,8 @@ var max_spell = 3
 @onready var hud_root: Control = $HudLayer/HudRoot
 @onready var pause_root: Control = $PauseLayer/PauseRoot
 @onready var transition_root: Control = $TransitionLayer/TransitionRoot
+
+@onready var camera : Camera2D = $World/Camera2D
 
 
 func _ready() -> void:
@@ -65,7 +67,6 @@ func _input(event: InputEvent) -> void:
 		pause_root.show_pause_screen()
 	if event.is_action_pressed("change_spell"):
 		change_spell()
-
 	
 
 #region level loading
@@ -96,9 +97,10 @@ func _deferred_load_level(level_num) -> void:
 		push_error("Loaded level is not of BaseLevel type or does not exist")
 		return
 	# TODO (main menu): should have a fall back scene
+	center_point.y += 320
 	
 	level_root.add_child(_current_level)
-	
+	_current_level.global_position.y = center_point.y
 	#allow level to fully process before accessing it
 	await get_tree().process_frame
 	_place_player_at_level_spawn()
@@ -107,20 +109,20 @@ func _deferred_load_level(level_num) -> void:
 
 
 
-func get_random_level(difficulty : int) -> int:
-	var level_num:int = 0
-	if difficulty == 1:
-		level_num = (randi()% max_easy_level) +1
-		print("new level is: " + str(level_num))
-	elif difficulty == 2:
-		level_num = (randi()% max_medium_level) +51
-		print("new level is: " + str(level_num))
-	else:
-		level_num = (randi()% max_hard_level) +101
-		print("new level is: " + str(level_num))
-	
-	
-	return level_num
+#func get_random_level(difficulty : int) -> int:
+	#var level_num:int = 0
+	#if difficulty == 1:
+		#level_num = (randi()% max_easy_level) +1
+		#print("new level is: " + str(level_num))
+	#elif difficulty == 2:
+		#level_num = (randi()% max_medium_level) +51
+		#print("new level is: " + str(level_num))
+	#else:
+		#level_num = (randi()% max_hard_level) +101
+		#print("new level is: " + str(level_num))
+	#
+	#
+	#return level_num
 
 
 
@@ -150,6 +152,9 @@ func _setup_level_camera() -> void:
 	# TODO add a fallback camera
 	# Eventually separate this into the camera system as camera_system.set_target(player)
 	#level_camera.target = player
+
+func _physics_process(delta: float) -> void:
+	camera.global_position.y = lerp(camera.global_position.y, center_point.y, 0.1)
 
 #endregion
 
