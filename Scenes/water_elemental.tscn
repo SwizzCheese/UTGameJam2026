@@ -78,7 +78,7 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_d2rsb"]
 radius = 4.0
-height = 16.0
+height = 18.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_126ht"]
 size = Vector2(15, 21.319445)
@@ -95,9 +95,11 @@ flip_h = true
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_d2rsb")
 
-[node name="Area2D" type="Area2D" parent="." unique_id=1959846872]
+[node name="Hitbox" type="Area2D" parent="." unique_id=1959846872]
+collision_layer = 2
+collision_mask = 34
 
-[node name="PlayerCollision" type="CollisionShape2D" parent="Area2D" unique_id=328941002]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=328941002]
 position = Vector2(-0.5937499, 0.5)
 rotation = 1.5707964
 scale = Vector2(0.6, 0.9)
@@ -114,3 +116,5 @@ collide_with_areas = true
 [node name="Timer" type="Timer" parent="." unique_id=1216115221]
 
 [node name="Marker2D" type="Marker2D" parent="." unique_id=803103343]
+
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
