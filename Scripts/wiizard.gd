@@ -147,17 +147,9 @@ func change_spell(new_bomb:int):
 func throw_bomb():
 	#Instantiate a bomb object at BombCreationPoint with velocity away and up from player's global position
 	var bomb_direction : Vector2 = Vector2(Input.get_axis("left", "right"), 1)
-	var up = false
-	if Input.is_action_pressed("up"):
-		bomb_direction.y = 2
-		up = true
-	else:
-		up = false
 	if Input.is_action_pressed("down"):
 		last_direction = 0
 		bomb_direction.y = 0
-	if up:
-		last_direction = 0
 	$BombCreationPoint.position.x = last_direction * 10.0
 	$BombCreationPoint.position.y = bomb_direction.y * 10
 	

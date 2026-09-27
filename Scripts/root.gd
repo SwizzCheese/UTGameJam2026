@@ -41,7 +41,7 @@ func _ready() -> void:
 	_init_player()
 	#Global.player.change_spell(1)
 	Global.root = self
-	load_level(1)
+	load_level(5)
 	
 	Global.player_died.connect(open_death_screen)
 
@@ -108,20 +108,20 @@ func _deferred_load_level(level_num) -> void:
 
 
 
-func get_random_level(difficulty : int) -> int:
-	var level_num:int = 0
-	if difficulty == 1:
-		level_num = (randi()% max_easy_level) +1
-		print("new level is: " + str(level_num))
-	elif difficulty == 2:
-		level_num = (randi()% max_medium_level) +51
-		print("new level is: " + str(level_num))
-	else:
-		level_num = (randi()% max_hard_level) +101
-		print("new level is: " + str(level_num))
-	
-	
-	return level_num
+#func get_random_level(difficulty : int) -> int:
+	#var level_num:int = 0
+	#if difficulty == 1:
+		#level_num = (randi()% max_easy_level) +1
+		#print("new level is: " + str(level_num))
+	#elif difficulty == 2:
+		#level_num = (randi()% max_medium_level) +51
+		#print("new level is: " + str(level_num))
+	#else:
+		#level_num = (randi()% max_hard_level) +101
+		#print("new level is: " + str(level_num))
+	#
+	#
+	#return level_num
 
 
 
