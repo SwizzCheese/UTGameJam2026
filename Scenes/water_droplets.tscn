@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://bosjxkdkr7oak"]
+
+[ext_resource type="Material" uid="uid://b5xlkicq6pbna" path="res://Assets/Objects/water_droplets.tres" id="1_p88x5"]
+
+[node name="GPUParticles2D" type="GPUParticles2D" unique_id=610266993]
+amount = 2
+amount_ratio = 0.7052
+lifetime = 0.6
+process_material = ExtResource("1_p88x5")

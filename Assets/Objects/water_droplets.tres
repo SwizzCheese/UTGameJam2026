@@ -1,0 +1,27 @@
+[gd_resource type="ParticleProcessMaterial" format=3 uid="uid://b5xlkicq6pbna"]
+
+[sub_resource type="Curve" id="Curve_le5s2"]
+_limits = [-2.0, 2.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_le5s2"]
+curve = SubResource("Curve_le5s2")
+
+[resource]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 1.0
+direction = Vector3(0, -1, 0)
+spread = 90.0
+initial_velocity_min = 75.0
+initial_velocity_max = 150.0
+orbit_velocity_min = 9.49949e-08
+orbit_velocity_max = 9.49949e-08
+orbit_velocity_curve = SubResource("CurveTexture_le5s2")
+gravity = Vector3(0, 500, 0)
+scale_min = 2.0
+scale_max = 2.0
+color = Color(0, 0.46666667, 1, 1)
+hue_variation_min = -0.12000002
+hue_variation_max = 0.029999977

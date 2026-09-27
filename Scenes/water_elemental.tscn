@@ -1,0 +1,97 @@
+[gd_scene format=3 uid="uid://coaql1qo8gh8v"]
+
+[ext_resource type="PackedScene" uid="uid://bosjxkdkr7oak" path="res://Scenes/water_droplets.tscn" id="1_5pgmd"]
+[ext_resource type="Texture2D" uid="uid://djln63nfa87tv" path="res://Assets/HighResWaterElemental.png" id="1_jy3dd"]
+[ext_resource type="Script" uid="uid://dmypeu5v0r6hk" path="res://Scenes/animated_sprite_2d.gd" id="2_8xy3n"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_44esh"]
+atlas = ExtResource("1_jy3dd")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8gq4n"]
+atlas = ExtResource("1_jy3dd")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_78ugp"]
+atlas = ExtResource("1_jy3dd")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1xf5c"]
+atlas = ExtResource("1_jy3dd")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8xy3n"]
+atlas = ExtResource("1_jy3dd")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_curdl"]
+atlas = ExtResource("1_jy3dd")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ut84"]
+atlas = ExtResource("1_jy3dd")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jy3dd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_44esh")
+}],
+"loop": 1,
+"name": &"Dead",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8gq4n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_78ugp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1xf5c")
+}],
+"loop": 1,
+"name": &"Jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8xy3n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_curdl")
+}],
+"loop": 1,
+"name": &"Move",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ut84")
+}],
+"loop": 1,
+"name": &"Peeking",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_126ht"]
+
+[node name="WaterElemental" type="CharacterBody2D" unique_id=308782645]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1635740889]
+sprite_frames = SubResource("SpriteFrames_jy3dd")
+animation = &"Move"
+script = ExtResource("2_8xy3n")
+
+[node name="CPUParticles2D" parent="." unique_id=610266993 instance=ExtResource("1_5pgmd")]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=328941002]
+position = Vector2(-1, 1)
+rotation = 1.5707964
+scale = Vector2(0.5, 0.5)
+shape = SubResource("CapsuleShape2D_126ht")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1379859631]
