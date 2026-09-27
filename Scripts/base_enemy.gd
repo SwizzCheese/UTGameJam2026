@@ -3,6 +3,7 @@ extends BaseEnemy
 
 @onready var wall_detector = $WallDetector
 @onready var push_timer = $PushTimer
+@onready var sprite = $AnimatedSprite2D
 
 func _ready() -> void:
 	speed = 100.0
@@ -18,12 +19,21 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * delta
 	if not being_pushed:
 		velocity.x = lerp(velocity.x, direction * speed, acceleration)
+	if velocity.x <= -1:
+		sprite.flip_h = true
+	else:
+		sprite.flip_h = false
+	
+	
 	
 	if wall_detector.is_colliding():
 		change_direction()
 		wall_detector.target_position.x = wall_detector.target_position.x * -1
 	
 	if health <= 0:
+		sprite.visible = false
+		$deathparticles.emitting = true
+		await get_tree().create_timer(0.6).timeout
 		destroyed()
 	
 	move_and_slide()
