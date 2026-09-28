@@ -4,6 +4,6 @@
 
 [node name="Music" type="Node2D" unique_id=1352310534]
 
-[node name="IntroTheme" type="AudioStreamPlayer2D" parent="." unique_id=3966000]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1096871053]
 stream = ExtResource("1_13yx0")
 autoplay = true
