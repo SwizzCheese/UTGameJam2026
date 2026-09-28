@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://dq5m0dl6u1xng"]
+
+[ext_resource type="Script" uid="uid://cfh8yqxhtghsq" path="res://Scripts/pillar.gd" id="1_qjw1r"]
+[ext_resource type="Texture2D" uid="uid://bhvbavkos2i1w" path="res://Assets/BombWiizard_Pillar.png" id="2_qjw1r"]
+[ext_resource type="PackedScene" uid="uid://l3v0ybv0pxvw" path="res://Scenes/Objects/pillar_piece_1.tscn" id="3_huptq"]
+[ext_resource type="PackedScene" uid="uid://bv5cw8x5lhq7b" path="res://Scenes/Objects/pillar_piece_2.tscn" id="4_es7bk"]
+[ext_resource type="PackedScene" uid="uid://bkapn6uvbr1yp" path="res://Scenes/Objects/pillar_piece_3.tscn" id="5_csxbd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
+size = Vector2(16, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yf5fn"]
+size = Vector2(18, 34)
+
+[node name="Pillar" type="StaticBody2D" unique_id=200004278]
+collision_layer = 4
+script = ExtResource("1_qjw1r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1746942364]
+shape = SubResource("RectangleShape2D_g4v7s")
+debug_color = Color(0, 0.6475406, 0.2166881, 0.41960785)
+
+[node name="hitbox" type="Area2D" parent="." unique_id=1625187714]
+collision_layer = 4
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox" unique_id=1065741962]
+shape = SubResource("RectangleShape2D_yf5fn")
+debug_color = Color(0.10327499, 0.6484332, 1.92523e-07, 0.41960785)
+
+[node name="Pieces" type="Node2D" parent="." unique_id=709912796]
+
+[node name="PillarPiece3" parent="Pieces" unique_id=1678577688 instance=ExtResource("5_csxbd")]
+position = Vector2(0, -11)
+continuous_cd = 0
+
+[node name="PillarPiece1" parent="Pieces" unique_id=2013807626 instance=ExtResource("3_huptq")]
+position = Vector2(0, 11)
+continuous_cd = 0
+
+[node name="PillarPiece2" parent="Pieces" unique_id=1764720002 instance=ExtResource("4_es7bk")]
+continuous_cd = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=331296038]
+visible = false
+position = Vector2(0, -2.3841858e-07)
+texture = ExtResource("2_qjw1r")
+
+[connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]

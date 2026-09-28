@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://dpvl0kfv7o03r"]
+
+[ext_resource type="PackedScene" uid="uid://ebgnm6q42bsf" path="res://Scenes/Objects/furniture.tscn" id="1_efel5"]
+[ext_resource type="PackedScene" uid="uid://swq4pnexbb0" path="res://Scenes/Objects/toad_stool_top.tscn" id="2_lqxog"]
+[ext_resource type="PackedScene" uid="uid://cumlu36yhxuav" path="res://Scenes/Objects/toad_stool_leg.tscn" id="3_chf13"]
+
+[node name="Toadstool" unique_id=1280265690 instance=ExtResource("1_efel5")]
+
+[node name="ToadStoolTop" parent="Pieces" parent_id_path=PackedInt32Array(189221998) index="0" unique_id=1153083776 instance=ExtResource("2_lqxog")]
+
+[node name="ToadStoolLeg2" parent="Pieces" parent_id_path=PackedInt32Array(189221998) index="1" unique_id=1756230159 instance=ExtResource("3_chf13")]
+position = Vector2(3, 2)
+
+[node name="ToadStoolLeg" parent="Pieces" parent_id_path=PackedInt32Array(189221998) index="2" unique_id=799035854 instance=ExtResource("3_chf13")]
+position = Vector2(-2, 2)
+flip_h = true

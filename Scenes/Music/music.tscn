@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://dcmxgd7e1jra2"]
+
+[ext_resource type="AudioStream" uid="uid://dl2p1rdmxbft0" path="res://Assets/Soundeffects/BOMB_WIZARDS_loopable.wav" id="1_13yx0"]
+
+[node name="Music" type="Node2D" unique_id=1352310534]
+
+[node name="IntroTheme" type="AudioStreamPlayer2D" parent="." unique_id=3966000]
+stream = ExtResource("1_13yx0")
+autoplay = true

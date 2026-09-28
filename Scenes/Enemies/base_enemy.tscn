@@ -13,7 +13,7 @@ collision_layer = 8
 script = ExtResource("1_hkymu")
 metadata/_custom_type_script = "uid://dwwlfvsw84jf7"
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1381807924]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1227632157]
 modulate = Color(3.0864043, 0, 0, 1)
 position = Vector2(1.9073486e-06, 1.9073486e-06)
 scale = Vector2(0.15625, 0.234375)

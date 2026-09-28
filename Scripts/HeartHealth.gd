@@ -8,7 +8,7 @@ extends HBoxContainer
 	
 
 var Health = 3
-var heartz : Array[TextureRect] = [$Heart,$Heart2,$Heart3]
+@onready var heartz : Array[TextureRect] = [$Heart,$Heart2,$Heart3]
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("add_heart"):
@@ -24,18 +24,20 @@ func _input(event: InputEvent) -> void:
 		
 func playerhurt(lost: int):
 	#loses health
-	for loop: int in Health-lost:
-		heartz[Health-lost].visible = 1 < Health
+	print("current health is: "+ str(lost)+ " hearts\nHealth is : "+ str(Health))
+	for  i in range(0, Health-lost):
+		heartz[Health-i-1].hide()
 		Health -= 1
+
 func playerrep(rep: int):
 	#replinishes health
-	for loop: int in Health+rep:
-		heartz[Health+rep].visible = 1 >Health
+	for i in range(0, rep-Health):
+		heartz[Health+i].show() 
 		Health += 1
 				
 func respawnz():
 	#respawns all the health back
-	for loop: int in Health:
-		heartz[Health].visible	= 1	
+	for  i in Health:
+		heartz[Health].show()	
 					
 	

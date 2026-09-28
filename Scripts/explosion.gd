@@ -1,6 +1,7 @@
 class_name ExplosionBase extends Node2D
 
-@export var time:float #time it takes for explosion to reach max/min values
+@export var time:float  = 1 #time it takes for explosion to reach max/min values
+var type: int
 
 @export var max_radius:float #maximum radius of blast
 var current_radius:float = 0
@@ -16,6 +17,10 @@ var current_power:float
 var current_push:float
 
 @onready var Explosion_Collision: CollisionShape2D = $ExplosionArea/Explosion_Collision
+@onready var timer: Timer = $Timer
+@onready var bomb_particles: GPUParticles2D = $BombParticles
+
+
 
 #TWEENS
 var radius_tween:Tween
@@ -28,6 +33,14 @@ func _ready() -> void:
 	current_power = max_power
 	current_push = max_push
 	$ExplosionArea.body_entered.connect(on_entered)
+	$ExplosionArea.area_entered.connect(damage)
+	
+	#timer
+	timer.wait_time = time
+	timer.timeout.connect(timer_timout)
+	timer.start()
+	
+	#tweens
 	radius_tween = create_tween()
 	power_tween = create_tween()
 	push_tween = create_tween()
@@ -44,11 +57,66 @@ func _physics_process(delta: float) -> void:
 
 func on_entered(body:Node2D):
 	print(body.get_class())
-	var dir:Vector2 = body.global_position - self.global_position
-	if body.is_in_group("PushableBodies")&& body.is_class("CharacterBody2D"):
-		body.pushed(dir.normalized(), current_push)
-	if body.is_in_group("PushableRigid"):
-		print("HELP ME!!!!!!!!!!!!!!")
-		body.pushed(dir.normalized(), current_push)
-		#apply_impulse((strength * direction, origin of impulse)
-		pass
+	var ray = RayCast2D.new()
+	add_child(ray)
+	
+	#Detect if the explosion is through a wall
+	ray.target_position = body.global_position - global_position
+	ray.force_raycast_update()
+	
+	if not ray.is_colliding():
+		var dir:Vector2 = body.global_position - self.global_position
+		if body is PushableCharBody:
+			print("I SEE YOU: "+ str(body))
+			body.pushed(dir.normalized(), current_push)
+		if body.is_in_group("PushableRigid"):
+			#print("HELP ME!!!!!!!!!!!!!!")
+			body.pushed(dir.normalized(), current_push)
+			#apply_impulse((strength * direction, origin of impulse)
+			pass
+		if body.is_in_group("enemy"):
+			body.pushed(dir.normalized(), current_push)
+
+func timer_timout() -> void:
+	queue_free()
+
+#receives the bomb type and assigns correct material to BombParticles
+func receive_bomb_type(bomb_type:int) -> void:
+	type = bomb_type
+	var path:String = "res://Materials/BombMaterials/"
+	if bomb_type == 0:
+		bomb_particles.process_material = load(path +"FireBombMaterial.tres")
+	elif bomb_type ==1:
+		bomb_particles.process_material = load(path +"WaterBombMaterial.tres")
+		
+	elif bomb_type ==2:
+		bomb_particles.process_material = load(path +"PlantBombMaterial.tres")
+	elif bomb_type ==3:
+		bomb_particles.process_material = load(path +"AirBombMaterial.tres")
+	print(str(bomb_particles.process_material))
+	bomb_particles.emitting = true
+	#print("type material correctly loaded (explosion_base)")
+
+func damage(area:Node2D) -> void:
+	#print("damage area sees: "+ str(area))
+	var ray = RayCast2D.new()
+	add_child(ray)
+	
+	#Detect if the explosion is through a wall
+	ray.target_position = area.global_position - global_position
+	ray.force_raycast_update()
+	
+	if not ray.is_colliding():
+		if area.owner.has_method("damaged"): #|| area is Enemy || area is Destroyable:
+			
+			var damage_array:Array[int] = [1, 0, 0, 0, 0]
+			if type ==0:
+				damage_array = [1, 1, 0, 0, 0]
+			elif type ==1:
+				damage_array = [1, 0, 1, 0, 0]
+			elif type ==2:
+				damage_array = [1, 0, 0, 1, 0]
+			elif type ==3:
+				damage_array = [1, 0, 0, 0, 1]
+			print("damaging creature: "+ str(damage_array))
+			area.owner.damaged(damage_array)

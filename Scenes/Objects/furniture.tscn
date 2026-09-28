@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://ebgnm6q42bsf"]
+
+[ext_resource type="Script" uid="uid://b7k84rkqjmfmk" path="res://Scripts/furniture.gd" id="1_gp4ul"]
+
+[node name="Furniture" type="RigidBody2D" unique_id=1280265690]
+script = ExtResource("1_gp4ul")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=993228712]
+
+[node name="Pieces" type="Node2D" parent="." unique_id=189221998]
+
+[node name="Timer" type="Timer" parent="." unique_id=975081939]
+one_shot = true

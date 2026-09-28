@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://d3sg41wcmo0fx"]
+
+[ext_resource type="Script" uid="uid://bsjv6231coarp" path="res://Scripts/death_screen.gd" id="1_u28jg"]
+
+[node name="DeathScreen" type="Control" unique_id=720936592]
+process_mode = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -544.0
+offset_bottom = -320.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_u28jg")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=451570514]
+layout_mode = 0
+offset_right = 544.0
+offset_bottom = 320.0
+color = Color(0.23529412, 0.2509804, 1, 1)
+
+[node name="Label" type="Label" parent="." unique_id=433599495]
+layout_mode = 0
+offset_left = 218.0
+offset_top = 83.0
+offset_right = 342.0
+offset_bottom = 106.0
+text = "you died I guess"
+
+[node name="respawn_button" type="Button" parent="." unique_id=821512832]
+layout_mode = 0
+offset_left = 112.0
+offset_top = 212.0
+offset_right = 187.0
+offset_bottom = 243.0
+text = "respawn"
+
+[node name="quit_button" type="Button" parent="." unique_id=109658917]
+layout_mode = 0
+offset_left = 360.0
+offset_top = 212.0
+offset_right = 434.0
+offset_bottom = 243.0
+text = "ragequit"
+
+[node name="Node2D" type="Node2D" parent="." unique_id=1671157672]
